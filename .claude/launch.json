@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "aivance-source",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4173", "--directory", "source"],
+      "runtimeExecutable": "php",
+      "runtimeArgs": ["-S", "127.0.0.1:4173", "-t", "source"],
       "port": 4173
     }
   ]

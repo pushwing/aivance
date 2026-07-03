@@ -1,0 +1,9 @@
+# Secrets — never commit
+.env
+
+# Composer deps
+/vendor/
+
+# Runtime
+/writable/
+*.log

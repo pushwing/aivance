@@ -29,7 +29,7 @@
         <a href="#tech">기술</a>
       </nav>
       <div class="nav-cta">
-        <a href="#cta" class="btn btn-primary btn-sm">문의하기 <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        <a href="#contact" class="btn btn-primary btn-sm">문의하기 <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </header>
@@ -45,7 +45,7 @@
       </p>
       <div class="hero-actions">
         <a href="#products" class="btn btn-primary btn-lg">제품 살펴보기 <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
-        <a href="#cta" class="btn btn-outline btn-lg">도입 문의</a>
+        <a href="#contact" class="btn btn-outline btn-lg">도입 문의</a>
       </div>
       <div class="hero-stats">
         <div><div class="stat-num">3</div><div class="stat-label">실전 제품군</div></div>
@@ -177,8 +177,84 @@
         <h2>업무 효율을 AI로 앞서갈 준비가 되셨나요?</h2>
         <p>제품 데모와 도입 상담을 도와드립니다. 연락처를 남겨주시면 영업일 기준 1일 내 회신드립니다.</p>
         <div class="cta-actions">
-          <a href="mailto:contact@aivance.kr" class="btn btn-light btn-lg">도입 문의하기 <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
-          <a href="#products" class="btn btn-ghost-invert btn-lg">문서 보기</a>
+          <a href="#contact" class="btn btn-light btn-lg">도입 문의하기 <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          <a href="#products" class="btn btn-ghost-invert btn-lg">제품 다시 보기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container section">
+      <div class="contact-grid">
+        <div class="contact-intro">
+          <div class="section-eyebrow">Contact</div>
+          <h2>도입 문의하기</h2>
+          <p>제품 데모와 도입 상담을 도와드립니다. 아래 양식을 남겨주시면 영업일 기준 1일 내에 <strong>advisor@aivance.kr</strong> 담당자가 회신드립니다.</p>
+          <div class="contact-point">
+            <i class="bi bi-chat-dots" aria-hidden="true"></i>
+            <div><div class="contact-point-t">무엇을 도와드리나요</div><div class="contact-point-d">제품 데모 · 견적 · 커스터마이징 · 유지보수 상담</div></div>
+          </div>
+          <div class="contact-point">
+            <i class="bi bi-clock" aria-hidden="true"></i>
+            <div><div class="contact-point-t">회신 시간</div><div class="contact-point-d">영업일 기준 1일 이내</div></div>
+          </div>
+          <div class="contact-point">
+            <i class="bi bi-envelope" aria-hidden="true"></i>
+            <div><div class="contact-point-t">직접 메일</div><div class="contact-point-d">advisor@aivance.kr</div></div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div id="form-alert" class="form-alert" role="status" aria-live="polite"></div>
+          <form id="contact-form" novalidate>
+            <input type="hidden" name="csrf_token" value="">
+            <!-- 허니팟 (사람에게 보이지 않음) -->
+            <div class="form-hp" aria-hidden="true">
+              <label>회사 URL<input type="text" name="company_url" tabindex="-1" autocomplete="off"></label>
+            </div>
+
+            <div class="form-row two">
+              <div>
+                <label class="form-label" for="f-name">이름 / 회사명<span class="req">*</span></label>
+                <input class="form-control" id="f-name" name="name" type="text" maxlength="100" placeholder="홍길동 / (주)뷰티풀" required>
+                <span class="form-error" id="err-name"></span>
+              </div>
+              <div>
+                <label class="form-label" for="f-email">이메일<span class="req">*</span></label>
+                <input class="form-control" id="f-email" name="email" type="email" placeholder="you@company.com" required>
+                <span class="form-error" id="err-email"></span>
+              </div>
+            </div>
+
+            <div class="form-row two">
+              <div>
+                <label class="form-label" for="f-phone">연락처</label>
+                <input class="form-control" id="f-phone" name="phone" type="tel" placeholder="010-0000-0000">
+                <span class="form-error" id="err-phone"></span>
+              </div>
+              <div>
+                <label class="form-label" for="f-product">관심 제품</label>
+                <select class="form-control" id="f-product" name="product">
+                  <option value="">선택 안 함</option>
+                  <option>AICura</option>
+                  <option>AICopia</option>
+                  <option>AICreo</option>
+                  <option>기타 / 미정</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label class="form-label" for="f-message">문의 내용<span class="req">*</span></label>
+              <textarea class="form-control" id="f-message" name="message" placeholder="도입하려는 서비스, 규모, 일정 등을 자유롭게 남겨주세요." required></textarea>
+              <span class="form-error" id="err-message"></span>
+            </div>
+
+            <button type="submit" id="contact-submit" class="btn btn-primary btn-lg" style="width:100%">문의 보내기</button>
+            <p style="font-size:12px;color:var(--text-subtle);margin:12px 0 0;text-align:center">보내주신 정보는 문의 응대 목적으로만 사용됩니다.</p>
+          </form>
         </div>
       </div>
     </div>
@@ -206,5 +282,6 @@
     </div>
   </footer>
 
+  <script src="js/contact.js" defer></script>
 </body>
 </html>
