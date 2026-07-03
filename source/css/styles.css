@@ -374,6 +374,7 @@ textarea.form-control { resize: vertical; min-height: 120px; }
   font-family: var(--font-display); font-weight: 700; font-size: 18px; color: var(--text-strong);
 }
 .footer-domains { display: flex; gap: 18px; font-size: 13px; color: var(--text-muted); }
+.footer-domains a:hover { color: var(--brand); }
 .footer-contact {
   display: flex; gap: 20px; flex-wrap: wrap; align-items: center;
   font-size: 13px; color: var(--text-muted);
