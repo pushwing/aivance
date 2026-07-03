@@ -1,6 +1,6 @@
 <?php
 /**
- * AIvance — 도입 문의 폼 엔드포인트 (Zoho SMTP)
+ * AIvance — 도입 문의 폼 엔드포인트 (Gmail SMTP)
  *
  *  GET  /contact.php?action=token   → CSRF 토큰 발급 (세션 저장 + JSON 반환)
  *  POST /contact.php                → 문의 접수 후 advisor@aivance.kr 로 메일 발송
@@ -169,7 +169,7 @@ $textBody = "새 도입 문의\n\n"
     . "관심 제품: " . ($product ?: '-') . "\n접수 시각: {$submittedAt}\n요청 IP: {$ip}\n\n"
     . "문의 내용:\n{$message}\n";
 
-/* ── Zoho SMTP 발송 ───────────────────────────────────────────────────── */
+/* ── Gmail SMTP 발송 ──────────────────────────────────────────────────── */
 $smtpUser = env_val('SMTP_USER');
 $smtpPass = env_val('SMTP_PASS');
 $mailFrom = env_val('MAIL_FROM', $smtpUser);
@@ -183,7 +183,7 @@ if ($smtpUser === '' || $smtpPass === '') {
 $mail = new PHPMailer(true);
 try {
     $mail->isSMTP();
-    $mail->Host       = env_val('SMTP_HOST', 'smtp.zoho.com');
+    $mail->Host       = env_val('SMTP_HOST', 'smtp.gmail.com');
     $mail->SMTPAuth   = true;
     $mail->Username   = $smtpUser;
     $mail->Password   = $smtpPass;
