@@ -1,0 +1,32 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   Sample page chrome — shared "back to AIvance" banner shown above each
+   product's sample design. Page-specific layout lives inline in each page.
+   ═══════════════════════════════════════════════════════════════════════ */
+.sample-bar {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px 24px;
+  background: var(--ink); color: #fff;
+  font-family: var(--font-sans); font-size: 13px;
+}
+.sample-bar a { color: #fff; text-decoration: none; }
+.sample-bar .sb-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 600;
+}
+.sample-bar .sb-back:hover { color: var(--slate-300); }
+.sample-bar .sb-label {
+  color: var(--slate-400);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.sample-bar .sb-tag {
+  font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: var(--radius-pill);
+  background: rgba(255,255,255,.12);
+}
+.sample-bar .sb-home {
+  margin-left: auto;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 600; color: var(--slate-300);
+}
+.sample-bar .sb-home:hover { color: #fff; }

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AICopia — AI 쇼핑몰 샘플 디자인</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/samples.css">
+  <style>
+    body { background: var(--surface-page); }
+    .copia-nav .brand .ai { color: var(--copia-500); }
+    .copia-hero {
+      background: linear-gradient(135deg, #2e1065 0%, #6d28d9 60%, #7c3aed 100%);
+      color: #fff; border-radius: var(--radius-xl); overflow: hidden;
+      padding: 56px 44px; display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+    }
+    .copia-hero h1 { font-family: var(--font-display); font-size: clamp(28px,4vw,40px); font-weight: 700; letter-spacing: -.02em; margin: 12px 0 14px; line-height: 1.15; }
+    .copia-hero p { color: rgba(255,255,255,.82); font-size: 16px; margin: 0 0 22px; max-width: 420px; }
+    .cats { display: flex; gap: 8px; flex-wrap: wrap; margin: 28px 0 22px; }
+    .cat {
+      font-size: 14px; font-weight: 500; padding: 7px 16px; border-radius: var(--radius-pill);
+      border: 1px solid var(--border-default); background: #fff; color: var(--text-body); cursor: pointer;
+    }
+    .cat.active { background: var(--copia-500); color: #fff; border-color: var(--copia-500); }
+    .prod-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+    .prod {
+      background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md);
+      overflow: hidden; transition: box-shadow var(--dur-base), transform var(--dur-base);
+    }
+    .prod:hover { box-shadow: var(--shadow-lg); transform: var(--lift); }
+    .prod-thumb { position: relative; aspect-ratio: 1/1; overflow: hidden; background: var(--slate-100); }
+    .prod-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .prod-badge {
+      position: absolute; top: 10px; left: 10px;
+      font-size: 11px; font-weight: 700; letter-spacing: .04em;
+      padding: 3px 8px; border-radius: var(--radius-pill); background: var(--copia-500); color: #fff;
+    }
+    .prod-badge.sale { background: var(--danger-500); }
+    .prod-soldout {
+      position: absolute; inset: 0; background: rgba(15,23,42,.55); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px;
+    }
+    .prod-body { padding: 14px; }
+    .prod-cat { font-size: 12px; color: var(--text-subtle); }
+    .prod-name { font-size: 14px; font-weight: 600; color: var(--text-strong); margin: 4px 0 8px; }
+    .prod-price { display: flex; align-items: baseline; gap: 8px; font-family: var(--font-display); }
+    .price-now { font-size: 17px; font-weight: 700; color: var(--text-strong); }
+    .price-was { font-size: 12px; color: var(--text-subtle); text-decoration: line-through; }
+    .price-off { font-size: 12px; font-weight: 700; color: var(--danger-500); }
+    .cart-btn {
+      width: 100%; margin-top: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: .5rem; font-size: 13px; font-weight: 600; border-radius: var(--radius-sm);
+      background: var(--copia-50); color: var(--copia-600); border: 1px solid transparent; cursor: pointer;
+    }
+    .cart-btn:hover { background: var(--copia-500); color: #fff; }
+    @media (max-width: 860px) { .prod-grid { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- Sample banner -->
+  <div class="sample-bar">
+    <a class="sb-back" href="../index.html"><i class="bi bi-arrow-left"></i> AIvance 홈</a>
+    <span class="sb-label"><span class="sb-tag" style="color:var(--copia-500)">AICopia</span> AI 쇼핑몰 샘플 디자인</span>
+    <a class="sb-home" href="https://copia.aivance.kr" target="_blank" rel="noopener">copia.aivance.kr <i class="bi bi-box-arrow-up-right"></i></a>
+  </div>
+
+  <!-- Product nav -->
+  <header class="site-header copia-nav">
+    <div class="container nav">
+      <span class="brand"><span class="ai">AI</span>Copia</span>
+      <nav class="nav-links"><a href="#">전체상품</a><a href="#">기획전</a><a href="#">브랜드</a><a href="#">고객센터</a></nav>
+      <div class="nav-cta" style="display:flex;gap:16px;align-items:center;font-size:19px;color:var(--text-body)">
+        <a href="#" aria-label="검색"><i class="bi bi-search"></i></a>
+        <a href="#" aria-label="마이페이지"><i class="bi bi-person"></i></a>
+        <a href="#" aria-label="장바구니" style="position:relative"><i class="bi bi-cart2"></i>
+          <span style="position:absolute;top:-6px;right:-8px;background:var(--copia-500);color:#fff;font-size:10px;font-weight:700;min-width:16px;height:16px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px">3</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding:26px 24px 64px">
+    <!-- Hero -->
+    <section class="copia-hero">
+      <div style="flex:1;min-width:260px">
+        <span class="badge-soft" style="background:rgba(255,255,255,.15);color:#fff"><i class="bi bi-stars"></i> AI가 운영을 대신합니다</span>
+        <h1>취향을 아는 쇼핑,<br>운영은 AI가 대신합니다</h1>
+        <p>상품 설명 생성, 문의 자동 분류, 리뷰 요약까지 — 반복 운영 업무를 AI가 처리하는 커머스 솔루션.</p>
+        <a href="#" class="btn btn-lg btn-light">지금 쇼핑하기 <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div style="flex:0 0 240px;display:flex;flex-direction:column;gap:10px">
+        <div style="background:rgba(255,255,255,.12);border-radius:var(--radius-md);padding:16px"><div style="font-size:12px;color:rgba(255,255,255,.7)">이번 주 신상품</div><div style="font-family:var(--font-display);font-size:24px;font-weight:700">+42종</div></div>
+        <div style="background:rgba(255,255,255,.12);border-radius:var(--radius-md);padding:16px"><div style="font-size:12px;color:rgba(255,255,255,.7)">AI 자동 등록 상품</div><div style="font-family:var(--font-display);font-size:24px;font-weight:700">1,280+</div></div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <div class="cats">
+      <span class="cat active">전체</span>
+      <span class="cat">아우터</span>
+      <span class="cat">상의</span>
+      <span class="cat">하의</span>
+      <span class="cat">신발</span>
+      <span class="cat">가방</span>
+    </div>
+
+    <!-- Product grid -->
+    <section class="prod-grid">
+      <article class="prod">
+        <div class="prod-thumb"><span class="prod-badge">NEW</span><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop" alt="베이직 코튼 티셔츠"></div>
+        <div class="prod-body"><div class="prod-cat">상의</div><div class="prod-name">베이직 코튼 티셔츠</div>
+          <div class="prod-price"><span class="price-now">19,900원</span><span class="price-was">29,000원</span><span class="price-off">31%</span></div>
+          <button class="cart-btn"><i class="bi bi-cart-plus"></i> 담기</button></div>
+      </article>
+      <article class="prod">
+        <div class="prod-thumb"><img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600&h=600&fit=crop" alt="오버핏 데님 자켓"></div>
+        <div class="prod-body"><div class="prod-cat">아우터</div><div class="prod-name">오버핏 데님 자켓</div>
+          <div class="prod-price"><span class="price-now">89,000원</span></div>
+          <button class="cart-btn"><i class="bi bi-cart-plus"></i> 담기</button></div>
+      </article>
+      <article class="prod">
+        <div class="prod-thumb"><img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&h=600&fit=crop" alt="소프트 니트 가디건"></div>
+        <div class="prod-body"><div class="prod-cat">상의</div><div class="prod-name">소프트 니트 가디건</div>
+          <div class="prod-price"><span class="price-now">43,200원</span><span class="price-was">54,000원</span><span class="price-off">20%</span></div>
+          <button class="cart-btn"><i class="bi bi-cart-plus"></i> 담기</button></div>
+      </article>
+      <article class="prod">
+        <div class="prod-thumb"><span class="prod-badge">PICK</span><img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&h=600&fit=crop" alt="클래식 치노 팬츠"></div>
+        <div class="prod-body"><div class="prod-cat">하의</div><div class="prod-name">클래식 치노 팬츠</div>
+          <div class="prod-price"><span class="price-now">34,300원</span><span class="price-was">49,000원</span><span class="price-off">30%</span></div>
+          <button class="cart-btn"><i class="bi bi-cart-plus"></i> 담기</button></div>
+      </article>
+      <article class="prod">
+        <div class="prod-thumb"><div class="prod-soldout">품절</div><img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=600&h=600&fit=crop" alt="캔버스 스니커즈"></div>
+        <div class="prod-body"><div class="prod-cat">신발</div><div class="prod-name">캔버스 스니커즈</div>
+          <div class="prod-price"><span class="price-now">69,000원</span></div>
+          <button class="cart-btn" style="opacity:.5;cursor:not-allowed">품절</button></div>
+      </article>
+      <article class="prod">
+        <div class="prod-thumb"><span class="prod-badge sale">SALE</span><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=600&fit=crop" alt="미니멀 크로스백"></div>
+        <div class="prod-body"><div class="prod-cat">가방</div><div class="prod-name">미니멀 크로스백</div>
+          <div class="prod-price"><span class="price-now">55,300원</span><span class="price-was">79,000원</span><span class="price-off">30%</span></div>
+          <button class="cart-btn"><i class="bi bi-cart-plus"></i> 담기</button></div>
+      </article>
+      <article class="prod">
+        <div class="prod-thumb"><span class="prod-badge">NEW</span><img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&h=600&fit=crop" alt="울 블렌드 코트"></div>
+        <div class="prod-body"><div class="prod-cat">아우터</div><div class="prod-name">울 블렌드 코트</div>
+          <div class="prod-price"><span class="price-now">159,000원</span></div>
+          <button class="cart-btn"><i class="bi bi-cart-plus"></i> 담기</button></div>
+      </article>
+      <article class="prod">
+        <div class="prod-thumb"><img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=600&fit=crop" alt="라운드넥 스웨트셔츠"></div>
+        <div class="prod-body"><div class="prod-cat">상의</div><div class="prod-name">라운드넥 스웨트셔츠</div>
+          <div class="prod-price"><span class="price-now">31,200원</span><span class="price-was">39,000원</span><span class="price-off">20%</span></div>
+          <button class="cart-btn"><i class="bi bi-cart-plus"></i> 담기</button></div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background:#fff;border-top:1px solid var(--border-subtle)">
+    <div class="container" style="padding:28px 24px;display:flex;justify-content:space-between;font-size:13px;color:var(--text-muted);flex-wrap:wrap;gap:12px">
+      <span><b style="font-family:var(--font-display);color:var(--text-strong)"><span style="color:var(--copia-500)">AI</span>Copia</b> · AIvance 제품군</span>
+      <span>© 2026 AIvance. CodeIgniter 4 · Bootstrap 5</span>
+    </div>
+  </footer>
+
+</body>
+</html>

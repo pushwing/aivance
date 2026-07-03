@@ -248,6 +248,29 @@ img { max-width: 100%; display: block; }
 .product-desc { font-size: 14px; line-height: 1.65; color: var(--text-muted); margin: 0 0 14px; }
 .chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
 
+/* Clickable product card → sample design, with homepage link pinned bottom */
+.product-card { position: relative; text-decoration: none; }
+.product-links {
+  margin-top: 18px; padding-top: 16px;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 10px; flex-wrap: wrap;
+  border-top: 1px solid var(--border-subtle);
+}
+.product-view { font-size: 13px; font-weight: 700; white-space: nowrap; display: inline-flex; align-items: center; gap: 5px; }
+.product-view--cura  { color: var(--cura-600); }
+.product-view--copia { color: var(--copia-600); }
+.product-view--creo  { color: var(--creo-600); }
+.product-home {
+  position: relative; z-index: 2;
+  font-size: 13px; color: var(--text-muted); white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.product-home:hover { color: var(--text-strong); }
+/* stretched link — whole card navigates to the sample page */
+.stretched-link::after {
+  content: ''; position: absolute; inset: 0; z-index: 1;
+}
+
 /* Why / Philosophy */
 .why {
   background: var(--surface-page);

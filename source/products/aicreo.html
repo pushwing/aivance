@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AICreo — 기업 홈페이지·CMS 샘플 디자인</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/samples.css">
+  <style>
+    body { background: var(--surface-page); }
+    .creo-hero { background: linear-gradient(120deg, #fff 0%, #fef0f5 100%); }
+    .creo-hero-inner { padding: 84px 24px 76px; text-align: center; }
+    .creo-hero h1 {
+      font-family: var(--font-display); font-size: clamp(34px,5vw,56px); font-weight: 700;
+      letter-spacing: -.03em; color: var(--text-strong); margin: 18px 0 16px; line-height: 1.1;
+    }
+    .creo-hero p { font-size: 18px; color: var(--text-muted); max-width: 520px; margin: 0 auto 28px; }
+    .creo-nav .brand .ai { color: var(--creo-500); }
+    .services-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+    .svc-icon {
+      width: 44px; height: 44px; border-radius: var(--radius-md);
+      background: var(--creo-50); color: var(--creo-600);
+      display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 14px;
+    }
+    .svc-title { font-weight: 700; color: var(--text-strong); margin-bottom: 6px; }
+    .svc-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
+    .notice-wrap { display: flex; gap: 48px; align-items: flex-start; }
+    .notice-row { display: flex; align-items: center; gap: 16px; padding: 18px 4px; border-bottom: 1px solid var(--border-subtle); }
+    .notice-badge { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: var(--radius-pill); }
+    .nb-creo { background: var(--creo-50); color: var(--creo-600); }
+    .nb-neutral { background: var(--slate-100); color: var(--slate-600); }
+    .creo-cta { background: var(--ink); border-radius: var(--radius-xl); padding: 52px 48px; display: flex; gap: 48px; align-items: center; color: #fff; }
+    .creo-form input {
+      width: 100%; padding: .7rem .9rem; font-family: var(--font-sans); font-size: 14px;
+      border: 1px solid var(--slate-600); border-radius: var(--radius-sm);
+      background: rgba(255,255,255,.06); color: #fff; margin-bottom: 10px;
+    }
+    .creo-form input::placeholder { color: var(--slate-400); }
+    @media (max-width: 860px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .notice-wrap, .creo-cta { flex-direction: column; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sample banner -->
+  <div class="sample-bar">
+    <a class="sb-back" href="../index.html"><i class="bi bi-arrow-left"></i> AIvance 홈</a>
+    <span class="sb-label"><span class="sb-tag" style="color:var(--creo-500)">AICreo</span> 기업 홈페이지·CMS 샘플 디자인</span>
+    <a class="sb-home" href="https://creo.aivance.kr" target="_blank" rel="noopener">creo.aivance.kr <i class="bi bi-box-arrow-up-right"></i></a>
+  </div>
+
+  <!-- Product nav -->
+  <header class="site-header creo-nav">
+    <div class="container nav">
+      <span class="brand"><span class="ai">AI</span>Creo</span>
+      <nav class="nav-links"><a href="#">회사소개</a><a href="#">서비스</a><a href="#">포트폴리오</a><a href="#">공지사항</a></nav>
+      <div class="nav-cta" style="display:flex;gap:12px;align-items:center">
+        <span style="font-size:13px;font-weight:600;color:var(--creo-600)"><i class="bi bi-telephone"></i> 1600-0000</span>
+        <a href="#" class="btn btn-sm" style="background:var(--creo-500);color:#fff;border-color:var(--creo-500)">문의하기 <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="creo-hero">
+    <div class="container creo-hero-inner">
+      <span class="badge-soft" style="color:var(--creo-600);background:var(--creo-50)"><i class="bi bi-lightning-charge"></i> 3~5일 빠른 납품</span>
+      <h1>기업 홈페이지,<br>코어는 재사용하고 디자인만 교체</h1>
+      <p>검증된 CodeIgniter 4 코어 위에 테마만 갈아끼워 단순 홈페이지는 3~5일, 중형 사이트는 1~2주 안에 납품합니다.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="#" class="btn btn-lg" style="background:var(--creo-500);color:#fff;border-color:var(--creo-500)">데모 사이트 보기 <i class="bi bi-arrow-right"></i></a>
+        <a href="#" class="btn btn-outline btn-lg" style="color:var(--creo-600)">테마 둘러보기</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">150+</div><div class="stat-label">납품 사이트</div></div>
+        <div><div class="stat-num">3일</div><div class="stat-label">평균 납품</div></div>
+        <div><div class="stat-num">MIT</div><div class="stat-label">오픈소스 코어</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section style="padding:72px 0">
+    <div class="container">
+      <div class="section-center">
+        <div class="section-eyebrow" style="color:var(--creo-500)">What we build</div>
+        <h2 class="section-title" style="margin-bottom:0">납품에 필요한 모든 기능</h2>
+      </div>
+      <div class="services-grid">
+        <div class="card card--interactive"><div class="svc-icon"><i class="bi bi-window-stack"></i></div><div class="svc-title">동적 페이지 · CMS</div><div class="svc-desc">슬러그 기반 자동 라우팅과 위지윅 에디터로 콘텐츠를 직접 관리합니다.</div></div>
+        <div class="card card--interactive"><div class="svc-icon"><i class="bi bi-chat-square-text"></i></div><div class="svc-title">게시판 · 문의</div><div class="svc-desc">다중 게시판, 비회원 게시, 파일 첨부, 문의 자동 이메일 발송.</div></div>
+        <div class="card card--interactive"><div class="svc-icon"><i class="bi bi-palette"></i></div><div class="svc-title">테마 시스템</div><div class="svc-desc">ZIP 업로드로 테마 설치, 클릭 한 번으로 디자인 전환.</div></div>
+        <div class="card card--interactive"><div class="svc-icon"><i class="bi bi-search"></i></div><div class="svc-title">SEO 자동화</div><div class="svc-desc">OG 태그·메타 설명·GA·네이버 웹마스터 자동 삽입.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notice -->
+  <section style="padding:24px 0 64px">
+    <div class="container notice-wrap">
+      <div style="flex:0 0 240px">
+        <h2 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--text-strong);margin:0">공지사항</h2>
+        <p style="font-size:14px;color:var(--text-muted);margin-top:8px">제품 업데이트와 납품 소식을 전합니다.</p>
+        <a href="#" style="font-size:13px;font-weight:600;color:var(--creo-600)">전체보기 <i class="bi bi-chevron-right"></i></a>
+      </div>
+      <div style="flex:1;border-top:1px solid var(--border-subtle)">
+        <div class="notice-row"><span class="notice-badge nb-creo">공지</span><span style="flex:1;font-weight:600;color:var(--text-strong)">AICreo 2.0 — 테마 마켓플레이스 오픈</span><span style="font-size:13px;color:var(--text-subtle)">2026.06.28</span></div>
+        <div class="notice-row"><span class="notice-badge nb-neutral">업데이트</span><span style="flex:1;font-weight:600;color:var(--text-strong)">좌측 배너 사이드바 레이아웃(spring) 추가</span><span style="font-size:13px;color:var(--text-subtle)">2026.06.14</span></div>
+        <div class="notice-row"><span class="notice-badge nb-neutral">가이드</span><span style="flex:1;font-weight:600;color:var(--text-strong)">신규 클라이언트 3일 납품 워크플로우</span><span style="font-size:13px;color:var(--text-subtle)">2026.06.09</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:0 0 80px">
+    <div class="container">
+      <div class="creo-cta">
+        <div style="flex:1">
+          <h2 style="font-family:var(--font-display);font-size:32px;font-weight:700;margin:0 0 12px;letter-spacing:-.02em">홈페이지가 필요하신가요?</h2>
+          <p style="color:var(--slate-400);font-size:15px;margin:0;line-height:1.6">연락처를 남겨주시면 영업일 기준 1일 내 견적과 데모를 보내드립니다.</p>
+        </div>
+        <div class="creo-form" style="flex:0 0 340px">
+          <input placeholder="회사명 / 담당자">
+          <input placeholder="연락처">
+          <a href="#" class="btn btn-lg" style="background:var(--creo-500);color:#fff;border-color:var(--creo-500);width:100%">무료 견적 받기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background:var(--surface-page);border-top:1px solid var(--border-subtle)">
+    <div class="container" style="padding:28px 24px;display:flex;justify-content:space-between;font-size:13px;color:var(--text-muted);flex-wrap:wrap;gap:12px">
+      <span><b style="font-family:var(--font-display);color:var(--text-strong)"><span style="color:var(--creo-500)">AI</span>Creo</b> · AIvance 제품군</span>
+      <span>© 2026 AIvance. CodeIgniter 4 · Bootstrap 5</span>
+    </div>
+  </footer>
+
+</body>
+</html>
