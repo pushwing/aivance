@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="285" x2="1200" y2="915" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.55" stop-color="#eff5ff"/>
+      <stop offset="1" stop-color="#e6e4fd"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+
+  <!-- Card band (vertically centered so a 1200x630 centre-crop lands exactly) -->
+  <g transform="translate(0 285)">
+    <rect x="0" y="0" width="1200" height="8" fill="#2563EB"/>
+
+    <!-- Brand lockup -->
+    <g transform="translate(90 62)">
+      <path d="M0 46 L20 26 L38 38 L58 12" stroke="#2563EB" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="0" cy="46" r="7.5" fill="#2563EB"/>
+      <circle cx="20" cy="26" r="7.5" fill="#2563EB"/>
+      <circle cx="38" cy="38" r="7.5" fill="#6D5EF6"/>
+      <circle cx="58" cy="12" r="7.5" fill="#6D5EF6"/>
+      <text x="82" y="42" font-family="'Space Grotesk','Apple SD Gothic Neo','Helvetica Neue',sans-serif" font-size="46" font-weight="700" letter-spacing="-1"><tspan fill="#2563EB">AI</tspan><tspan fill="#0F172A">vance</tspan></text>
+    </g>
+
+    <!-- Headline -->
+    <text x="90" y="230" font-family="'Space Grotesk','Apple SD Gothic Neo','Helvetica Neue',sans-serif" font-size="72" font-weight="700" fill="#0F172A" letter-spacing="-2">반복 업무는 AI가 대신.</text>
+    <text x="90" y="318" font-family="'Space Grotesk','Apple SD Gothic Neo','Helvetica Neue',sans-serif" font-size="72" font-weight="700" fill="#0F172A" letter-spacing="-2">핵심은 검증된 코드.</text>
+
+    <!-- Subline -->
+    <text x="90" y="386" font-family="'Apple SD Gothic Neo','Helvetica Neue',sans-serif" font-size="30" fill="#475569">검증된 CodeIgniter 4 백엔드 + 실무형 AI 자동화 솔루션</text>
+
+    <!-- Product chips -->
+    <g font-family="'Apple SD Gothic Neo','Helvetica Neue',sans-serif" font-size="26" font-weight="600">
+      <rect x="90" y="438" width="200" height="52" rx="26" fill="#E7FBF8"/>
+      <text x="190" y="472" fill="#0E9488" text-anchor="middle">AICura · 의료광고</text>
+      <rect x="306" y="438" width="196" height="52" rx="26" fill="#F3EBFF"/>
+      <text x="404" y="472" fill="#6D28D9" text-anchor="middle">AICopia · 커머스</text>
+      <rect x="518" y="438" width="210" height="52" rx="26" fill="#FEECF3"/>
+      <text x="623" y="472" fill="#DB2F72" text-anchor="middle">AICreo · 홈페이지</text>
+    </g>
+
+    <!-- Domain -->
+    <text x="1110" y="560" font-family="'Space Grotesk','Helvetica Neue',sans-serif" font-size="30" font-weight="600" fill="#2563EB" text-anchor="end">aivance.kr</text>
+  </g>
+</svg>
