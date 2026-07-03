@@ -1,0 +1,6 @@
+/* ─── AIvance webfonts ──────────────────────────────────────────────
+   Body/UI: Noto Sans KR (matches the real product stack)
+   Display/brand: Space Grotesk (Latin-root naming — Cura/Copia/Creo)
+   Mono: JetBrains Mono (code-first engineering identity)
+   Loaded from Google Fonts. See readme.md → VISUAL FOUNDATIONS. */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');

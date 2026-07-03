@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="AIvance One-Page Home" description="AIvance 모 브랜드 원페이지 홈 — 히어로 · 3제품 · 철학 · 기술 · CTA" -->
+<helmet>
+<script src="./ds-base.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font-sans);color:var(--text-body);background:#fff}
+  a{text-decoration:none;color:inherit}
+</style>
+</helmet>
+
+<div style="font-family:var(--font-sans)">
+
+  <!-- Nav -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-subtle)">
+    <div style="max-width:1120px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;gap:28px">
+      <a href="#top" style="display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em;color:var(--text-strong)"><svg width="26" height="26" viewBox="0 0 64 64" fill="none"><path d="M14 46 L30 30 L44 40 L58 20" stroke="var(--brand)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="46" r="6" fill="var(--brand)"/><circle cx="30" cy="30" r="6" fill="var(--brand)"/><circle cx="44" cy="40" r="6" fill="var(--accent)"/><circle cx="58" cy="20" r="6" fill="var(--accent)"/></svg><span><span style="color:var(--brand)">AI</span>vance</span></a>
+      <nav style="display:flex;gap:22px;font-size:14px;font-weight:500;color:var(--text-body)">
+        <a href="#products">제품</a>
+        <a href="#why">철학</a>
+        <a href="#tech">기술</a>
+      </nav>
+      <div style="margin-left:auto">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" size="sm" iconRight="arrow-right" hint-size="120px,38px">문의하기</x-import>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" style="background:linear-gradient(165deg,#ffffff 0%,#eff5ff 55%,#e6e4fd 100%);border-bottom:1px solid var(--border-subtle)">
+    <div style="max-width:1120px;margin:0 auto;padding:96px 24px 84px;text-align:center">
+      <div style="display:inline-flex">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="brand" variant="soft" icon="stars" hint-size="180px,26px">AI로 업무를 앞서다</x-import>
+      </div>
+      <h1 style="font-family:var(--font-display);font-size:clamp(38px,6vw,60px);font-weight:700;letter-spacing:-.03em;line-height:1.08;color:var(--text-strong);margin:22px 0 18px">
+        반복 업무는 AI가 대신.<br>핵심은 검증된 코드.
+      </h1>
+      <p style="font-size:18px;line-height:1.6;color:var(--text-muted);max-width:560px;margin:0 auto 30px">
+        AIvance는 검증된 CodeIgniter 4 백엔드 위에 실무에 바로 투입 가능한 AI 자동화를 얹어 — 성형·의료 광고, 이커머스, 기업 홈페이지 세 영역의 실전 솔루션을 제공합니다.
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" size="lg" iconRight="arrow-right" hint-size="180px,48px">제품 살펴보기</x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" variant="outline" size="lg" hint-size="150px,48px">도입 문의</x-import>
+      </div>
+      <div style="display:flex;gap:40px;justify-content:center;margin-top:52px;flex-wrap:wrap">
+        <div><div style="font-family:var(--font-display);font-size:30px;font-weight:700;color:var(--text-strong)">3</div><div style="font-size:13px;color:var(--text-muted)">실전 제품군</div></div>
+        <div><div style="font-family:var(--font-display);font-size:30px;font-weight:700;color:var(--text-strong)">3~5일</div><div style="font-size:13px;color:var(--text-muted)">빠른 납품</div></div>
+        <div><div style="font-family:var(--font-display);font-size:30px;font-weight:700;color:var(--text-strong)">CI/CD</div><div style="font-size:13px;color:var(--text-muted)">무중단 배포</div></div>
+        <div><div style="font-family:var(--font-display);font-size:30px;font-weight:700;color:var(--text-strong)">PHPStan</div><div style="font-size:13px;color:var(--text-muted)">정적 분석</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products" style="max-width:1120px;margin:0 auto;padding:84px 24px">
+    <div style="text-align:center;margin-bottom:48px">
+      <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:700">Product lineup</div>
+      <h2 style="font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--text-strong);margin:8px 0 10px">AI + 라틴어 어근, 세 가지 실전 솔루션</h2>
+      <p style="font-size:15px;color:var(--text-muted);margin:0">Cura(돌봄) · Copia(풍요) · Creo(창조)</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Card" accent="cura" interactive="true" hint-size="100%,300px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div style="width:40px;height:40px;border-radius:10px;background:var(--cura-50);color:var(--cura-600);display:flex;align-items:center;justify-content:center;font-size:19px"><i class="bi bi-heart-pulse"></i></div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text-strong)"><span style="color:var(--cura-500)">AI</span>Cura</div>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--cura-600);margin-bottom:8px">성형·토탈 광고 솔루션</div>
+        <p style="font-size:14px;line-height:1.65;color:var(--text-muted);margin:0 0 14px">운영자·병원(광고주)·광고대행사 각 역할별 전용 페이지를 제공하고, 매출·소진 현황을 매일 AI가 요약합니다. iOS·Android 앱 개발까지 포함한 풀스택 솔루션입니다.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="font-size:12px;color:var(--text-body);background:var(--slate-100);padding:3px 9px;border-radius:999px">운영자·광고주·대행사 포털</span>
+          <span style="font-size:12px;color:var(--text-body);background:var(--slate-100);padding:3px 9px;border-radius:999px">iOS·Android 앱</span>
+          <span style="font-size:12px;color:var(--text-body);background:var(--slate-100);padding:3px 9px;border-radius:999px">AI 일일 리포트</span>
+          <span style="font-size:12px;color:var(--text-body);background:var(--slate-100);padding:3px 9px;border-radius:999px">Swagger API</span>
+        </div>
+      </x-import>
+
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Card" accent="copia" interactive="true" hint-size="100%,300px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div style="width:40px;height:40px;border-radius:10px;background:var(--copia-50);color:var(--copia-600);display:flex;align-items:center;justify-content:center;font-size:19px"><i class="bi bi-bag-heart"></i></div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text-strong)"><span style="color:var(--copia-500)">AI</span>Copia</div>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--copia-600);margin-bottom:8px">AI 쇼핑몰 솔루션</div>
+        <p style="font-size:14px;line-height:1.65;color:var(--text-muted);margin:0 0 14px">상품·주문·결제·회원 등급까지. 상품 설명 생성, 문의 분류, 리뷰 요약 등 반복 운영을 AI가 처리합니다.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="font-size:12px;color:var(--text-body);background:var(--slate-100);padding:3px 9px;border-radius:999px">PG 7종</span>
+          <span style="font-size:12px;color:var(--text-body);background:var(--slate-100);padding:3px 9px;border-radius:999px">Vision 상품등록</span>
+          <span style="font-size:12px;color:var(--text-body);background:var(--slate-100);padding:3px 9px;border-radius:999px">시맨틱 검색</span>
+        </div>
+      </x-import>
+
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Card" accent="creo" interactive="true" hint-size="100%,300px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div style="width:40px;height:40px;border-radius:10px;background:var(--creo-50);color:var(--creo-600);display:flex;align-items:center;justify-content:center;font-size:19px"><i class="bi bi-window-stack"></i></div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text-strong)"><span style="color:var(--creo-500)">AI</span>Creo</div>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--creo-600);margin-bottom:8px">기업 홈페이지·CMS 솔루션</div>
+        <p style="font-size:14px;line-height:1.65;color:var(--text-muted);margin:0 0 14px">코어는 재사용, 테마만 교체. 단순 홈페이지 3~5일, 중형 사이트 1~2주 납품을 목표로 설계했습니다.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span style="font-size:12px;color:var(--text-body);background:var(--slate-100);padding:3px 9px;border-radius:999px">테마 시스템</span>
+          <span style="font-size:12px;color:var(--text-body);background:var(--slate-100);padding:3px 9px;border-radius:999px">위지윅 CMS</span>
+          <span style="font-size:12px;color:var(--text-body);background:var(--slate-100);padding:3px 9px;border-radius:999px">SEO 자동화</span>
+        </div>
+      </x-import>
+
+    </div>
+  </section>
+
+  <!-- Why / Philosophy -->
+  <section id="why" style="background:var(--surface-page);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+    <div style="max-width:1120px;margin:0 auto;padding:84px 24px">
+      <div style="text-align:center;margin-bottom:48px">
+        <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:700">Why AIvance</div>
+        <h2 style="font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--text-strong);margin:8px 0 0">화려함보다 실전, 유행보다 유지보수</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px">
+        <div style="background:#fff;border:1px solid var(--border-default);border-radius:12px;padding:24px;box-shadow:var(--shadow-card)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><i class="bi bi-shield-check" style="color:var(--brand);font-size:20px"></i><span style="font-weight:700;color:var(--text-strong)">실전 코드, 데모 아님</span></div>
+          <p style="font-size:14px;line-height:1.65;color:var(--text-muted);margin:0">PHPUnit 테스트, PHPStan 정적 분석, GitHub Actions CI/CD, SSH 자동 배포까지 갖춘 프로덕션 레벨 코드베이스.</p>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border-default);border-radius:12px;padding:24px;box-shadow:var(--shadow-card)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><i class="bi bi-robot" style="color:var(--accent);font-size:20px"></i><span style="font-weight:700;color:var(--text-strong)">AI는 도구, 핵심은 자동화</span></div>
+          <p style="font-size:14px;line-height:1.65;color:var(--text-muted);margin:0">화려한 챗봇이 아니라 리포트 작성·상품 설명·문의 분류·이상 탐지 같은 실제 반복 업무를 대신 처리합니다.</p>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border-default);border-radius:12px;padding:24px;box-shadow:var(--shadow-card)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><i class="bi bi-coin" style="color:var(--cura-500);font-size:20px"></i><span style="font-weight:700;color:var(--text-strong)">비용 최적화형 AI</span></div>
+          <p style="font-size:14px;line-height:1.65;color:var(--text-muted);margin:0">LLM 호출은 꼭 필요한 곳에만. 나머지는 휴리스틱(규칙 기반)으로 처리해 비용과 지연을 최소화합니다.</p>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border-default);border-radius:12px;padding:24px;box-shadow:var(--shadow-card)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><i class="bi bi-lightning-charge" style="color:var(--creo-500);font-size:20px"></i><span style="font-weight:700;color:var(--text-strong)">빠른 납품, 유지보수 가능한 구조</span></div>
+          <p style="font-size:14px;line-height:1.65;color:var(--text-muted);margin:0">코어 재사용 + 테마(껍데기) 교체 방식으로 신규 고객사 적용 기간을 크게 단축합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech -->
+  <section id="tech" style="max-width:1120px;margin:0 auto;padding:72px 24px;text-align:center">
+    <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-subtle);font-weight:700;margin-bottom:20px">검증된 기술 기반</div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+      <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-body);background:var(--slate-100);padding:8px 14px;border-radius:8px">CodeIgniter 4</span>
+      <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-body);background:var(--slate-100);padding:8px 14px;border-radius:8px">PHP 8.4+</span>
+      <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-body);background:var(--slate-100);padding:8px 14px;border-radius:8px">MySQL 8</span>
+      <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-body);background:var(--slate-100);padding:8px 14px;border-radius:8px">Bootstrap 5</span>
+      <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-body);background:var(--slate-100);padding:8px 14px;border-radius:8px">JWT · OAuth2</span>
+      <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-body);background:var(--slate-100);padding:8px 14px;border-radius:8px">Groq · Claude</span>
+      <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-body);background:var(--slate-100);padding:8px 14px;border-radius:8px">AWS · GCP · Azure</span>
+      <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-body);background:var(--slate-100);padding:8px 14px;border-radius:8px">GitHub Actions</span>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:1120px;margin:0 auto;padding:0 24px 84px">
+    <div style="background:var(--ink);border-radius:24px;padding:56px 48px;text-align:center;color:#fff">
+      <h2 style="font-family:var(--font-display);font-size:32px;font-weight:700;margin:0 0 12px">업무 효율을 AI로 앞서갈 준비가 되셨나요?</h2>
+      <p style="color:var(--slate-400);font-size:16px;margin:0 auto 26px;max-width:520px">제품 데모와 도입 상담을 도와드립니다. 연락처를 남겨주시면 영업일 기준 1일 내 회신드립니다.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" size="lg" iconRight="arrow-right" style="background:#fff;color:var(--ink);border-color:#fff" hint-size="160px,48px">도입 문의하기</x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" variant="ghost" size="lg" style="color:#fff" hint-size="140px,48px">문서 보기</x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="border-top:1px solid var(--border-subtle);background:#fff">
+    <div style="max-width:1120px;margin:0 auto;padding:32px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div style="display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--text-strong)"><svg width="22" height="22" viewBox="0 0 64 64" fill="none"><path d="M14 46 L30 30 L44 40 L58 20" stroke="var(--brand)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="46" r="6" fill="var(--brand)"/><circle cx="30" cy="30" r="6" fill="var(--brand)"/><circle cx="44" cy="40" r="6" fill="var(--accent)"/><circle cx="58" cy="20" r="6" fill="var(--accent)"/></svg><span><span style="color:var(--brand)">AI</span>vance</span></div>
+      <div style="display:flex;gap:18px;font-size:13px;color:var(--text-muted)">
+        <span>cura.aivance.kr</span><span>copia.aivance.kr</span><span>creo.aivance.kr</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-subtle)">© 2026 AIvance. All rights reserved.</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>

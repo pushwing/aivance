@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="AICopia Storefront" description="AI 커머스 스토어프론트 — 히어로 · 카테고리 · 상품 그리드" -->
+<helmet>
+<script src="./ds-base.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<style>*{box-sizing:border-box}body{margin:0;font-family:var(--font-sans);color:var(--text-body);background:var(--surface-page)}a{text-decoration:none;color:inherit}</style>
+</helmet>
+
+<div style="font-family:var(--font-sans)">
+  <!-- Nav -->
+  <header style="position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border-subtle)">
+    <div style="max-width:1160px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;gap:24px">
+      <span style="display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em;color:var(--text-strong)"><svg width="26" height="26" viewBox="0 0 64 64" fill="none"><path d="M14 46 L30 30 L44 40 L58 20" stroke="var(--copia-500)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="46" r="6" fill="var(--copia-500)"/><circle cx="30" cy="30" r="6" fill="var(--copia-500)"/><circle cx="44" cy="40" r="6" fill="var(--copia-600)"/><circle cx="58" cy="20" r="6" fill="var(--copia-600)"/></svg><span><span style="color:var(--copia-500)">AI</span>Copia</span></span>
+      <nav style="display:flex;gap:20px;font-size:14px;font-weight:500;margin-left:8px"><a>전체상품</a><a>기획전</a><a>공지사항</a></nav>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:10px">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.IconButton" icon="search" label="검색" hint-size="40px,40px"></x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.IconButton" icon="cart2" accent="copia" variant="outline" label="장바구니" hint-size="40px,40px"></x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" size="sm" variant="ghost" iconLeft="person" hint-size="90px,36px">로그인</x-import>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section style="background:linear-gradient(135deg,#4c1d95 0%,#6d28d9 55%,#7c3aed 100%);color:#fff">
+    <div style="max-width:1160px;margin:0 auto;padding:60px 24px;display:flex;align-items:center;gap:40px;flex-wrap:wrap">
+      <div style="flex:1;min-width:300px">
+        <div style="display:inline-flex"><x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="copia" variant="soft" icon="stars" hint-size="150px,26px">AI 개인화 추천</x-import></div>
+        <h1 style="font-family:var(--font-display);font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin:16px 0 12px">취향을 아는 쇼핑,<br>운영은 AI가 대신합니다</h1>
+        <p style="font-size:18px;color:rgba(255,255,255,.82);margin:0 0 22px;max-width:440px">상품 등록부터 문의 응대까지 — 반복 업무는 AICopia가 처리합니다.</p>
+        <div style="display:flex;gap:10px">
+          <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" size="lg" iconRight="arrow-right" style="background:#fff;color:var(--copia-600);border-color:#fff" hint-size="170px,48px">쇼핑 시작하기</x-import>
+          <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" variant="outline" size="lg" style="color:#fff;border-color:rgba(255,255,255,.5)" hint-size="130px,48px">기획전 보기</x-import>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category chips -->
+  <div style="background:#fff;border-bottom:1px solid var(--border-subtle)">
+    <div style="max-width:1160px;margin:0 auto;padding:16px 24px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Tag" accent="copia" active="true" as="button" hint-size="60px,32px">전체</x-import>
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Tag" accent="copia" as="button" hint-size="70px,32px">아우터</x-import>
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Tag" accent="copia" as="button" hint-size="60px,32px">상의</x-import>
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Tag" accent="copia" as="button" hint-size="60px,32px">하의</x-import>
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Tag" accent="copia" as="button" hint-size="60px,32px">신발</x-import>
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Tag" accent="copia" as="button" hint-size="60px,32px">가방</x-import>
+    </div>
+  </div>
+
+  <!-- Product grid -->
+  <section style="max-width:1160px;margin:0 auto;padding:40px 24px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="ink" hint-size="46px,24px">NEW</x-import>
+      <span style="font-size:20px;font-weight:700;color:var(--text-strong)">신상품</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.ProductCard" name="베이직 코튼 티셔츠" category="상의" price="29000" discount-price="19900" badge="NEW" image="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop" hint-size="100%,320px"></x-import>
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.ProductCard" name="오버핏 데님 자켓" category="아우터" price="89000" image="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=500&h=500&fit=crop" hint-size="100%,320px"></x-import>
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.ProductCard" name="소프트 니트 가디건" category="상의" price="54000" discount-price="43200" image="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&h=500&fit=crop" hint-size="100%,320px"></x-import>
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.ProductCard" name="캔버스 스니커즈" category="신발" price="69000" sold-out="true" image="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=500&h=500&fit=crop" hint-size="100%,320px"></x-import>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;margin:40px 0 20px">
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="danger" hint-size="46px,24px">SALE</x-import>
+      <span style="font-size:20px;font-weight:700;color:var(--text-strong)">할인 상품</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.ProductCard" name="클래식 치노 팬츠" category="하의" price="49000" discount-price="34300" badge="PICK" image="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=500&h=500&fit=crop" hint-size="100%,320px"></x-import>
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.ProductCard" name="미니멀 크로스백" category="가방" price="79000" discount-price="55300" image="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&h=500&fit=crop" hint-size="100%,320px"></x-import>
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.ProductCard" name="라운드넥 스웨트셔츠" category="상의" price="39000" discount-price="31200" image="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=500&fit=crop" hint-size="100%,320px"></x-import>
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.ProductCard" name="울 블렌드 코트" category="아우터" price="159000" discount-price="119000" image="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=500&h=500&fit=crop" hint-size="100%,320px"></x-import>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background:var(--ink);color:#fff">
+    <div style="max-width:1160px;margin:0 auto;padding:32px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--slate-400)">
+      <div style="display:flex;align-items:center;gap:8px"><svg width="20" height="20" viewBox="0 0 64 64" fill="none"><path d="M14 46 L30 30 L44 40 L58 20" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="46" r="6" fill="#fff"/><circle cx="30" cy="30" r="6" fill="#fff"/><circle cx="44" cy="40" r="6" fill="#fff"/><circle cx="58" cy="20" r="6" fill="#fff"/></svg><span><span style="font-family:var(--font-display);font-weight:700;color:#fff"><span style="color:var(--copia-500)">AI</span>Copia</span> — AI 커머스 솔루션</span></div>
+      <div>© 2026 AIvance. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+</body>
+</html>

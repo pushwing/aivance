@@ -1,0 +1,27 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Radius & Elevation" subtitle="Corner radii + soft slate shadow ramp" -->
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+body{margin:0;padding:22px;font-family:var(--font-sans);background:var(--surface-page)}
+.h{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-subtle);font-weight:700;margin:0 0 10px}
+.row{display:flex;gap:16px;margin-bottom:20px}
+.box{width:80px;height:56px;background:#fff;border:1px solid var(--border-default);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;color:var(--text-muted)}
+.sh{width:96px;height:56px;background:#fff;border-radius:var(--radius-md);display:flex;align-items:flex-end;padding:6px;font-family:var(--font-mono);font-size:10px;color:var(--text-subtle)}
+</style></head><body>
+<div class="h">Radius</div>
+<div class="row">
+  <div class="box" style="border-radius:var(--radius-xs)">4</div>
+  <div class="box" style="border-radius:var(--radius-sm)">6</div>
+  <div class="box" style="border-radius:var(--radius-md)">12·card</div>
+  <div class="box" style="border-radius:var(--radius-lg)">16</div>
+  <div class="box" style="border-radius:var(--radius-pill)">pill</div>
+</div>
+<div class="h">Elevation</div>
+<div class="row">
+  <div class="sh" style="box-shadow:var(--shadow-xs)">xs</div>
+  <div class="sh" style="box-shadow:var(--shadow-card)">card</div>
+  <div class="sh" style="box-shadow:var(--shadow-md)">md</div>
+  <div class="sh" style="box-shadow:var(--shadow-lg)">lg·hover</div>
+  <div class="sh" style="box-shadow:var(--shadow-xl)">xl</div>
+</div>
+</body></html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="AICura Ad Dashboard" description="성형·의료 광고 대시보드 — AI 일일 리포트 · KPI · 병원 소진" -->
+<helmet>
+<script src="./ds-base.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<style>*{box-sizing:border-box}body{margin:0;font-family:var(--font-sans);color:var(--text-body);background:var(--surface-page)}a{text-decoration:none;color:inherit}</style>
+</helmet>
+
+<div style="display:flex;min-height:100vh;font-family:var(--font-sans)">
+  <!-- Sidebar -->
+  <aside style="width:230px;flex:none;background:var(--ink);color:#fff;display:flex;flex-direction:column;padding:20px 14px">
+    <div style="display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em;padding:4px 10px 22px"><svg width="26" height="26" viewBox="0 0 64 64" fill="none"><path d="M14 46 L30 30 L44 40 L58 20" stroke="var(--cura-500)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="46" r="6" fill="var(--cura-500)"/><circle cx="30" cy="30" r="6" fill="var(--cura-500)"/><circle cx="44" cy="40" r="6" fill="#fff"/><circle cx="58" cy="20" r="6" fill="#fff"/></svg><span><span style="color:var(--cura-500)">AI</span>Cura</span></div>
+    <nav style="display:flex;flex-direction:column;gap:2px;font-size:14px">
+      <a style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:6px;font-weight:600;background:var(--cura-600);color:#fff"><i class="bi bi-speedometer2"></i>대시보드</a>
+      <a style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:6px;font-weight:500;color:var(--slate-400)"><i class="bi bi-file-earmark-text"></i>AI 리포트</a>
+      <a style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:6px;font-weight:500;color:var(--slate-400)"><i class="bi bi-building"></i>병원 관리</a>
+      <a style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:6px;font-weight:500;color:var(--slate-400)"><i class="bi bi-bar-chart"></i>캠페인</a>
+      <a style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:6px;font-weight:500;color:var(--slate-400)"><i class="bi bi-people"></i>앱 로그</a>
+      <a style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:6px;font-weight:500;color:var(--slate-400)"><i class="bi bi-phone"></i>앱 (iOS·Android)</a>
+      <a style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:6px;font-weight:500;color:var(--slate-400)"><i class="bi bi-gear"></i>설정</a>
+    </nav>
+    <div style="margin-top:auto;padding:12px;border-radius:12px;background:rgba(255,255,255,.06);font-size:12px;color:var(--slate-400)"><div style="color:#fff;font-weight:600;margin-bottom:2px">운영자 스코프</div>운영자 · 병원(광고주) · 대행사 역할별 페이지 · iOS·Android 앱</div>
+  </aside>
+
+  <!-- Main -->
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+    <!-- Topbar -->
+    <div style="height:60px;background:#fff;border-bottom:1px solid var(--border-subtle);display:flex;align-items:center;padding:0 26px;gap:14px">
+      <div>
+        <div style="font-weight:700;font-size:16px;color:var(--text-strong)">대시보드</div>
+        <div style="font-size:12px;color:var(--text-subtle)">2026년 7월 3일 · AI 일일 리포트 자동 생성됨</div>
+      </div>
+      <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+        <div style="width:170px"><x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Select" hint-size="170px,40px"><option>운영자(전체)</option><option>광고주(내 병원)</option><option>대행사(소속 병원)</option></x-import></div>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.IconButton" icon="bell" label="알림" hint-size="40px,40px"></x-import>
+        <div style="width:34px;height:34px;border-radius:999px;background:var(--cura-500);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">운</div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div style="padding:26px;display:flex;flex-direction:column;gap:18px">
+      <!-- KPIs -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.StatCard" label="오늘 매출" value="₩32.4M" tone="cura" icon="graph-up-arrow" delta="18" hint-size="100%,150px"></x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.StatCard" label="상담 신청" value="156" unit="건" tone="cura" icon="chat-dots" delta="12" hint-size="100%,150px"></x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.StatCard" label="집행 병원" value="24" unit="곳" tone="brand" icon="building" hint-size="100%,150px"></x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.StatCard" label="소진 임박" value="3" unit="곳" tone="warning" icon="exclamation-triangle" delta="-2" hint-size="100%,150px"></x-import>
+      </div>
+
+      <!-- Chart + Report -->
+      <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:18px;align-items:start">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Card" padding="md" hint-size="100%,240px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+            <div style="font-weight:700;color:var(--text-strong)">주간 매출 추이</div>
+            <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="success" variant="soft" icon="arrow-up-right" hint-size="60px,24px">+18%</x-import>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:14px;height:150px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:65px;border-radius:6px 6px 0 0;background:var(--cura-50);border:1px solid var(--cura-500)"></div><span style="font-size:12px;color:var(--text-subtle)">월</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:85px;border-radius:6px 6px 0 0;background:var(--cura-50);border:1px solid var(--cura-500)"></div><span style="font-size:12px;color:var(--text-subtle)">화</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:74px;border-radius:6px 6px 0 0;background:var(--cura-50);border:1px solid var(--cura-500)"></div><span style="font-size:12px;color:var(--text-subtle)">수</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:98px;border-radius:6px 6px 0 0;background:var(--cura-50);border:1px solid var(--cura-500)"></div><span style="font-size:12px;color:var(--text-subtle)">목</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:110px;border-radius:6px 6px 0 0;background:var(--cura-50);border:1px solid var(--cura-500)"></div><span style="font-size:12px;color:var(--text-subtle)">금</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:102px;border-radius:6px 6px 0 0;background:var(--cura-50);border:1px solid var(--cura-500)"></div><span style="font-size:12px;color:var(--text-subtle)">토</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:130px;border-radius:6px 6px 0 0;background:var(--cura-500)"></div><span style="font-size:12px;color:var(--text-subtle)">일</span></div>
+          </div>
+        </x-import>
+
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Card" accent="cura" padding="md" hint-size="100%,240px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+            <div style="width:30px;height:30px;border-radius:6px;background:var(--cura-50);color:var(--cura-600);display:flex;align-items:center;justify-content:center"><i class="bi bi-stars"></i></div>
+            <div style="font-weight:700;color:var(--text-strong)">AI 일일 리포트</div>
+          </div>
+          <p style="font-size:14px;line-height:1.75;color:var(--text-body);margin:0 0 12px">오늘 전체 매출은 <b style="color:var(--text-strong)">₩3,240만</b>으로 전일 대비 <b style="color:var(--success-700)">18% 증가</b>했습니다. <b style="color:var(--warning-700)">뷰티풀 의원</b>의 광고비가 94% 소진되어 재충전이 필요합니다.</p>
+          <div style="display:flex;gap:8px">
+            <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" accent="cura" size="sm" iconRight="arrow-right" hint-size="120px,36px">전체 리포트</x-import>
+            <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" variant="ghost" size="sm" iconLeft="download" hint-size="80px,36px">PDF</x-import>
+          </div>
+        </x-import>
+      </div>
+
+      <!-- Hospitals -->
+      <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Card" padding="none" hint-size="100%,300px">
+        <div style="padding:16px 18px;border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700;color:var(--text-strong)">병원별 광고비 소진</div>
+          <a style="font-size:13px;color:var(--cura-600)">전체보기</a>
+        </div>
+        <div style="padding:6px 0">
+          <div style="display:flex;align-items:center;gap:14px;padding:12px 18px">
+            <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-strong);margin-bottom:6px">서울라인 성형외과</div><div style="height:6px;background:var(--slate-100);border-radius:999px;overflow:hidden"><div style="width:82%;height:100%;background:var(--cura-500)"></div></div></div>
+            <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);width:44px;text-align:right">82%</span>
+            <div style="width:78px;text-align:right"><x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="success" variant="soft" hint-size="48px,24px">정상</x-import></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:12px 18px">
+            <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-strong);margin-bottom:6px">뷰티풀 의원</div><div style="height:6px;background:var(--slate-100);border-radius:999px;overflow:hidden"><div style="width:94%;height:100%;background:var(--warning-500)"></div></div></div>
+            <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);width:44px;text-align:right">94%</span>
+            <div style="width:78px;text-align:right"><x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="warning" variant="soft" hint-size="60px,24px">소진임박</x-import></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:12px 18px">
+            <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-strong);margin-bottom:6px">그레이스 피부과</div><div style="height:6px;background:var(--slate-100);border-radius:999px;overflow:hidden"><div style="width:41%;height:100%;background:var(--cura-500)"></div></div></div>
+            <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);width:44px;text-align:right">41%</span>
+            <div style="width:78px;text-align:right"><x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="success" variant="soft" hint-size="48px,24px">정상</x-import></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:12px 18px">
+            <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-strong);margin-bottom:6px">미소 성형외과</div><div style="height:6px;background:var(--slate-100);border-radius:999px;overflow:hidden"><div style="width:100%;height:100%;background:var(--danger-500)"></div></div></div>
+            <span style="font-family:var(--font-mono);font-size:13px;color:var(--text-muted);width:44px;text-align:right">100%</span>
+            <div style="width:78px;text-align:right"><x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="danger" variant="soft" hint-size="60px,24px">소진완료</x-import></div>
+          </div>
+        </div>
+      </x-import>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,73 @@
+/* ═══ AIvance color system ═══════════════════════════════════════════
+   Grounded in the real CI4/Bootstrap stack (primary #0d6efd, ink #1e2a38)
+   and elevated for the parent AIvance brand. */
+:root {
+  /* ── Brand — AIvance ── */
+  --aiv-blue-50:  #EFF5FF;
+  --aiv-blue-100: #DBE8FE;
+  --aiv-blue-200: #BFD5FE;
+  --aiv-blue-300: #93B8FD;
+  --aiv-blue-400: #6094FA;
+  --aiv-blue-500: #2563EB;   /* primary — "Advance" blue */
+  --aiv-blue-600: #1D4ED8;
+  --aiv-blue-700: #1E40AF;
+  --aiv-blue-800: #1E3A8A;
+  --aiv-blue-900: #172554;
+
+  /* AI-signal — electric indigo (echoes the real indigo/violet themes) */
+  --aiv-signal-100: #E6E4FD;
+  --aiv-signal-300: #B3ACFA;
+  --aiv-signal-500: #6D5EF6;
+  --aiv-signal-600: #5B4CE0;
+  --aiv-signal-700: #4B3DC2;
+
+  /* ── Neutrals — slate ── */
+  --slate-0:   #FFFFFF;
+  --slate-50:  #F8FAFC;
+  --slate-100: #F1F5F9;
+  --slate-200: #E2E8F0;
+  --slate-300: #CBD5E1;
+  --slate-400: #94A3B8;
+  --slate-500: #64748B;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1E293B;
+  --slate-900: #0F172A;
+  --ink:       #1E2A38;   /* real product --dark */
+
+  /* ── Semantic ── */
+  --success-100: #DCFCE7; --success-500: #16A34A; --success-700: #15803D;
+  --warning-100: #FEF3C7; --warning-500: #F59E0B; --warning-700: #B45309;
+  --danger-100:  #FEE2E2; --danger-500:  #DC2626; --danger-700:  #B91C1C;
+  --info-100:    #E0F2FE; --info-500:    #0EA5E9; --info-700:    #0369A1;
+
+  /* ── Product accents (each product's brand hue) ── */
+  --cura-500:  #12B3A6;  --cura-600:  #0E9488;  --cura-50: #E7FBF8;  /* AICura — care / medical */
+  --copia-500: #7C3AED;  --copia-600: #6D28D9;  --copia-50: #F3EBFF; /* AICopia — commerce / abundance */
+  --creo-500:  #F0568C;  --creo-600:  #DB2F72;  --creo-50: #FEECF3;  /* AICreo — create / web */
+
+  /* ── Semantic aliases ── */
+  --brand:            var(--aiv-blue-500);
+  --brand-hover:      var(--aiv-blue-600);
+  --brand-active:     var(--aiv-blue-700);
+  --brand-subtle:     var(--aiv-blue-50);
+  --accent:           var(--aiv-signal-500);
+
+  --text-strong:      var(--slate-900);
+  --text-body:        var(--slate-700);
+  --text-muted:       var(--slate-500);
+  --text-subtle:      var(--slate-400);
+  --text-on-brand:    #FFFFFF;
+  --text-link:        var(--aiv-blue-600);
+
+  --surface-page:     var(--slate-50);
+  --surface-card:     #FFFFFF;
+  --surface-sunken:   var(--slate-100);
+  --surface-ink:      var(--ink);
+  --surface-hover:    var(--slate-50);
+
+  --border-subtle:    #F0F0F0;   /* real navbar border */
+  --border-default:   var(--slate-200);
+  --border-strong:    var(--slate-300);
+  --border-focus:     var(--aiv-blue-500);
+}

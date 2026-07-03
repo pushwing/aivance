@@ -1,0 +1,37 @@
+/* ═══ AIvance typography ═════════════════════════════════════════════ */
+:root {
+  /* Families */
+  --font-sans:    'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', 'Noto Sans KR', sans-serif;
+  --font-mono:    'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  /* Weights */
+  --fw-regular: 400; /* @kind font */
+  --fw-medium:  500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold:    700; /* @kind font */
+  --fw-black:   900; /* @kind font */
+
+  /* Type scale (rem @16px base) */
+  --fs-display: 3.5rem;   /* 56 — hero */
+  --fs-h1:      2.5rem;   /* 40 */
+  --fs-h2:      2rem;     /* 32 */
+  --fs-h3:      1.5rem;   /* 24 */
+  --fs-h4:      1.25rem;  /* 20 */
+  --fs-lg:      1.125rem; /* 18 — lead */
+  --fs-base:    1rem;     /* 16 — body */
+  --fs-sm:      0.875rem; /* 14 */
+  --fs-xs:      0.75rem;  /* 12 — labels/badges */
+
+  /* Line heights */
+  --lh-tight:   1.15; /* @kind font */
+  --lh-snug:    1.35; /* @kind font */
+  --lh-normal:  1.6; /* @kind font */
+  --lh-relaxed: 1.8; /* @kind font */
+
+  /* Letter spacing */
+  --ls-tight:  -0.02em; /* @kind font */
+  --ls-normal: 0; /* @kind font */
+  --ls-wide:   0.04em; /* @kind font */
+  --ls-caps:   0.08em; /* @kind font */
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="AICreo Corporate Site" description="빠른 납품형 기업 홈페이지 — 히어로 · 서비스 · 공지 · 문의 CTA" -->
+<helmet>
+<script src="./ds-base.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:var(--font-sans);color:var(--text-body);background:#fff}a{text-decoration:none;color:inherit}</style>
+</helmet>
+
+<div style="font-family:var(--font-sans)">
+  <!-- Nav -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border-subtle)">
+    <div style="max-width:1120px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;gap:28px">
+      <span style="display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em;color:var(--text-strong)"><svg width="26" height="26" viewBox="0 0 64 64" fill="none"><path d="M14 46 L30 30 L44 40 L58 20" stroke="var(--creo-500)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="46" r="6" fill="var(--creo-500)"/><circle cx="30" cy="30" r="6" fill="var(--creo-500)"/><circle cx="44" cy="40" r="6" fill="var(--creo-600)"/><circle cx="58" cy="20" r="6" fill="var(--creo-600)"/></svg><span><span style="color:var(--creo-500)">AI</span>Creo</span></span>
+      <nav style="display:flex;gap:22px;font-size:14px;font-weight:500"><a href="#svc">서비스</a><a href="#notice">공지사항</a><a href="#contact">문의</a></nav>
+      <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+        <a style="font-size:13px;font-weight:600;color:var(--creo-600)"><i class="bi bi-telephone"></i> 1600-0000</a>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" size="sm" accent="creo" iconRight="arrow-right" hint-size="110px,36px">문의하기</x-import>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section style="background:linear-gradient(120deg,#fff 0%,#fef0f5 100%)">
+    <div style="max-width:1120px;margin:0 auto;padding:88px 24px 78px;text-align:center">
+      <div style="display:inline-flex"><x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="creo" variant="soft" icon="lightning-charge" hint-size="150px,26px">3~5일 빠른 납품</x-import></div>
+      <h1 style="font-family:var(--font-display);font-size:clamp(36px,5.5vw,56px);font-weight:700;letter-spacing:-.03em;color:var(--text-strong);margin:18px 0 16px;line-height:1.1">기업 홈페이지,<br>코어는 재사용하고 디자인만 교체</h1>
+      <p style="font-size:18px;color:var(--text-muted);max-width:520px;margin:0 auto 28px">검증된 CodeIgniter 4 코어 위에 테마만 갈아끼워 단순 홈페이지는 3~5일, 중형 사이트는 1~2주 안에 납품합니다.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" accent="creo" size="lg" iconRight="arrow-right" hint-size="170px,48px">데모 사이트 보기</x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" variant="outline" accent="creo" size="lg" hint-size="150px,48px">테마 둘러보기</x-import>
+      </div>
+      <div style="display:flex;gap:36px;justify-content:center;margin-top:46px;flex-wrap:wrap">
+        <div><div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--text-strong)">150+</div><div style="font-size:13px;color:var(--text-muted)">납품 사이트</div></div>
+        <div><div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--text-strong)">3일</div><div style="font-size:13px;color:var(--text-muted)">평균 납품</div></div>
+        <div><div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--text-strong)">MIT</div><div style="font-size:13px;color:var(--text-muted)">오픈소스 코어</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="svc" style="background:var(--surface-page);padding:72px 0;border-top:1px solid var(--border-subtle)">
+    <div style="max-width:1120px;margin:0 auto;padding:0 24px">
+      <div style="text-align:center;margin-bottom:44px">
+        <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--creo-500);font-weight:700">What we build</div>
+        <h2 style="font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--text-strong);margin:8px 0 0">납품에 필요한 모든 기능</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Card" interactive="true" hint-size="100%,190px">
+          <div style="width:44px;height:44px;border-radius:12px;background:var(--creo-50);color:var(--creo-600);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px"><i class="bi bi-window-stack"></i></div>
+          <div style="font-weight:700;color:var(--text-strong);margin-bottom:6px">동적 페이지 · CMS</div>
+          <div style="font-size:13.5px;color:var(--text-muted);line-height:1.6">슬러그 기반 자동 라우팅과 위지윅 에디터로 콘텐츠를 직접 관리합니다.</div>
+        </x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Card" interactive="true" hint-size="100%,190px">
+          <div style="width:44px;height:44px;border-radius:12px;background:var(--creo-50);color:var(--creo-600);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px"><i class="bi bi-chat-square-text"></i></div>
+          <div style="font-weight:700;color:var(--text-strong);margin-bottom:6px">게시판 · 문의</div>
+          <div style="font-size:13.5px;color:var(--text-muted);line-height:1.6">다중 게시판, 비회원 게시, 파일 첨부, 문의 자동 이메일 발송.</div>
+        </x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Card" interactive="true" hint-size="100%,190px">
+          <div style="width:44px;height:44px;border-radius:12px;background:var(--creo-50);color:var(--creo-600);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px"><i class="bi bi-palette"></i></div>
+          <div style="font-weight:700;color:var(--text-strong);margin-bottom:6px">테마 시스템</div>
+          <div style="font-size:13.5px;color:var(--text-muted);line-height:1.6">ZIP 업로드로 테마 설치, 클릭 한 번으로 디자인 전환.</div>
+        </x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Card" interactive="true" hint-size="100%,190px">
+          <div style="width:44px;height:44px;border-radius:12px;background:var(--creo-50);color:var(--creo-600);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px"><i class="bi bi-search"></i></div>
+          <div style="font-weight:700;color:var(--text-strong);margin-bottom:6px">SEO 자동화</div>
+          <div style="font-size:13.5px;color:var(--text-muted);line-height:1.6">OG 태그·메타 설명·GA·네이버 웹마스터 자동 삽입.</div>
+        </x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notice -->
+  <section id="notice" style="max-width:1120px;margin:0 auto;padding:64px 24px;display:flex;gap:48px;flex-wrap:wrap">
+    <div style="flex:0 0 240px">
+      <h2 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--text-strong);margin:0">공지사항</h2>
+      <p style="font-size:14px;color:var(--text-muted);margin-top:8px">제품 업데이트와 납품 소식을 전합니다.</p>
+      <a style="font-size:13px;font-weight:600;color:var(--creo-600)">전체보기 <i class="bi bi-chevron-right"></i></a>
+    </div>
+    <div style="flex:1;min-width:300px;border-top:1px solid var(--border-subtle)">
+      <div style="display:flex;align-items:center;gap:16px;padding:18px 4px;border-bottom:1px solid var(--border-subtle)">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="creo" variant="soft" hint-size="46px,24px">공지</x-import>
+        <span style="flex:1;font-weight:600;color:var(--text-strong)">AICreo 2.0 — 테마 마켓플레이스 오픈</span><span style="font-size:13px;color:var(--text-subtle)">2026.06.28</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:18px 4px;border-bottom:1px solid var(--border-subtle)">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="neutral" variant="soft" hint-size="60px,24px">업데이트</x-import>
+        <span style="flex:1;font-weight:600;color:var(--text-strong)">좌측 배너 사이드바 레이아웃(spring) 추가</span><span style="font-size:13px;color:var(--text-subtle)">2026.06.14</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:18px 4px;border-bottom:1px solid var(--border-subtle)">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Badge" tone="neutral" variant="soft" hint-size="46px,24px">가이드</x-import>
+        <span style="flex:1;font-weight:600;color:var(--text-strong)">신규 클라이언트 3일 납품 워크플로우</span><span style="font-size:13px;color:var(--text-subtle)">2026.06.09</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" style="max-width:1120px;margin:0 auto;padding:0 24px 80px">
+    <div style="background:var(--ink);border-radius:24px;padding:52px 48px;display:flex;gap:48px;align-items:center;flex-wrap:wrap;color:#fff">
+      <div style="flex:1;min-width:280px">
+        <h2 style="font-family:var(--font-display);font-size:30px;font-weight:700;margin:0 0 12px">홈페이지가 필요하신가요?</h2>
+        <p style="color:var(--slate-400);font-size:15px;margin:0;line-height:1.6">연락처를 남겨주시면 영업일 기준 1일 내 견적과 데모를 보내드립니다.</p>
+      </div>
+      <div style="flex:0 0 340px;display:grid;gap:10px">
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Input" placeholder="회사명 / 담당자" icon="building" hint-size="100%,44px"></x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Input" placeholder="연락처" icon="telephone" hint-size="100%,44px"></x-import>
+        <x-import component-from-global-scope="AIvanceDesignSystem_2cbb92.Button" accent="creo" size="lg" block="true" hint-size="100%,48px">무료 견적 받기</x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background:var(--surface-page);border-top:1px solid var(--border-subtle)">
+    <div style="max-width:1120px;margin:0 auto;padding:28px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--text-muted)">
+      <span style="display:flex;align-items:center;gap:8px"><svg width="20" height="20" viewBox="0 0 64 64" fill="none"><path d="M14 46 L30 30 L44 40 L58 20" stroke="var(--creo-500)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="46" r="6" fill="var(--creo-500)"/><circle cx="30" cy="30" r="6" fill="var(--creo-500)"/><circle cx="44" cy="40" r="6" fill="var(--creo-600)"/><circle cx="58" cy="20" r="6" fill="var(--creo-600)"/></svg><span><b style="font-family:var(--font-display);color:var(--text-strong)"><span style="color:var(--creo-500)">AI</span>Creo</b> · AIvance 제품군</span></span>
+      <span>© 2026 AIvance. CodeIgniter 4 · Bootstrap 5</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+</body>
+</html>

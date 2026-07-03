@@ -1,0 +1,33 @@
+/* ═══ AIvance effects — radius, shadow, border, motion ═══════════════ */
+:root {
+  /* Radius (card = .75rem, real product value) */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   0.75rem;   /* 12 — cards */
+  --radius-lg:   1rem;      /* 16 */
+  --radius-xl:   1.5rem;    /* 24 */
+  --radius-pill: 999px;
+
+  /* Elevation — soft, slate-tinted */
+  --shadow-xs:   0 1px 2px rgba(15,23,42,.06);
+  --shadow-sm:   0 1px 3px rgba(15,23,42,.08);
+  --shadow-card: 0 1px 3px rgba(15,23,42,.08), 0 1px 2px rgba(15,23,42,.04);
+  --shadow-md:   0 4px 12px rgba(15,23,42,.10);          /* real product-card:hover */
+  --shadow-lg:   0 8px 24px rgba(15,23,42,.12);          /* hover lift */
+  --shadow-xl:   0 16px 40px rgba(15,23,42,.16);
+  --shadow-focus: 0 0 0 3px rgba(37,99,235,.35);         /* brand focus ring */
+
+  /* Borders */
+  --border-width: 1px;
+  --border-hair: 1px solid var(--border-subtle);
+
+  /* Motion */
+  --ease-out:   cubic-bezier(.16,1,.3,1); /* @kind other */
+  --ease-inout: cubic-bezier(.65,0,.35,1); /* @kind other */
+  --dur-fast:   .12s; /* @kind other */
+  --dur-base:   .15s; /* @kind other */
+  --dur-slow:   .3s; /* @kind other */
+
+  /* Hover lift */
+  --lift: translateY(-3px); /* @kind other */
+}

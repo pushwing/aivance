@@ -1,0 +1,41 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Card & StatCard" subtitle="Base surface + dashboard KPI widget" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:22px;background:var(--surface-page);font-family:var(--font-sans)}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;align-items:start}</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Card, StatCard, Button } = window.AIvanceDesignSystem_2cbb92;
+function Demo(){
+  return (
+    <div className="grid">
+      <StatCard label="오늘 매출" value="₩3,240,000" icon="graph-up-arrow" delta={12} />
+      <StatCard label="신규 주문" value={128} unit="건" tone="copia" icon="bag-check" delta={-4} />
+      <StatCard label="미읽음 문의" value={7} unit="건" tone="warning" icon="envelope" />
+      <div style={{gridColumn:'1 / 3'}}>
+        <Card header="AI 일일 리포트" accent="cura"
+          footer={<Button size="sm" variant="subtle" iconRight="arrow-right">전체 리포트</Button>}>
+          오늘 매출은 전일 대비 <b>12% 증가</b>했습니다. 재고 소진이 임박한 상품 3건에 대해 발주를 제안합니다.
+        </Card>
+      </div>
+      <Card interactive accent="copia">
+        <div style={{fontWeight:600,marginBottom:4,color:'var(--text-strong)'}}>클릭 가능한 카드</div>
+        <div style={{fontSize:14,color:'var(--text-muted)'}}>hover 시 살짝 떠오릅니다.</div>
+      </Card>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body>
+</html>
