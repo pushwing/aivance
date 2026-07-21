@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AITessera — JWT 인증·인가 API 샘플 디자인</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/samples.css">
+  <style>
+    body { background: var(--surface-page); }
+    .tessera-nav .brand .ai { color: var(--tessera); }
+    .tessera-hero {
+      background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 55%, #0ea5e9 100%);
+      color: #fff; border-radius: var(--radius-xl); overflow: hidden;
+      padding: 56px 48px; margin: 26px 0;
+    }
+    .tessera-hero .eyebrow-badge { display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#fff;background:rgba(255,255,255,.15);padding:5px 13px;border-radius:999px; }
+    .tessera-hero h1 { font-family: var(--font-display); font-size: clamp(28px,4vw,42px); font-weight: 700; letter-spacing: -.02em; margin: 16px 0 8px; line-height: 1.15; }
+    .tessera-hero .tagline { font-family: var(--font-display); font-style: italic; font-size: 15px; color: rgba(255,255,255,.75); margin: 0 0 16px; }
+    .tessera-hero p { color: rgba(255,255,255,.85); font-size: 15.5px; max-width: 560px; margin: 0 0 22px; line-height: 1.65; }
+    .req-block { font-family: var(--font-mono); font-size: 13px; line-height: 1.75; background: rgba(0,0,0,.28); border-radius: var(--radius-md); padding: 18px 20px; overflow-x: auto; white-space: pre; }
+    .req-block .m { color: #7DD3FC; font-weight: 700; }
+    .req-block .k { color: #FCD34D; }
+    .req-block .s { color: #86EFAC; }
+    .req-block .c { color: rgba(255,255,255,.45); }
+    .endpoints { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .ep-card { background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 18px 20px; box-shadow: var(--shadow-card); }
+    .ep-method { display: inline-block; font-family: var(--font-mono); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-sm); margin-bottom: 10px; }
+    .m-post { background: var(--tessera-50); color: var(--tessera-600); }
+    .m-get { background: var(--success-100); color: var(--success-700); }
+    .ep-path { font-family: var(--font-mono); font-size: 13.5px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px; }
+    .ep-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    table.scopes { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    table.scopes th { text-align: left; padding: 10px 4px; font-size: 12px; color: var(--text-subtle); font-weight: 600; border-bottom: 1px solid var(--border-subtle); }
+    table.scopes td { padding: 12px 4px; border-bottom: 1px solid var(--border-subtle); color: var(--text-body); }
+    table.scopes tr:last-child td { border-bottom: none; }
+    .scope-code { font-family: var(--font-mono); font-size: 12.5px; background: var(--slate-100); padding: 2px 8px; border-radius: var(--radius-sm); }
+    .stack-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .stack-tag { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-body); background: var(--slate-100); padding: 7px 14px; border-radius: var(--radius-sm); }
+    @media (max-width: 860px) { .endpoints { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- Sample banner -->
+  <div class="sample-bar">
+    <a class="sb-back" href="../index.html"><i class="bi bi-arrow-left"></i> AIvance 홈</a>
+    <span class="sb-label"><span class="sb-tag" style="color:var(--tessera)">AITessera</span> JWT 인증·인가 API 샘플 디자인</span>
+    <a class="sb-home" href="https://tessera.aivance.kr" target="_blank" rel="noopener">tessera.aivance.kr <i class="bi bi-box-arrow-up-right"></i></a>
+  </div>
+
+  <!-- Product nav -->
+  <header class="site-header tessera-nav">
+    <div class="container nav">
+      <span class="brand"><span class="ai">AI</span>Tessera</span>
+      <nav class="nav-links"><a href="#">문서</a><a href="#">엔드포인트</a><a href="#">스코프</a><a href="#">SDK</a></nav>
+      <div class="nav-cta">
+        <a href="#" class="btn btn-sm" style="background:var(--tessera);color:#fff;border-color:var(--tessera)">API 키 발급 <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-bottom:64px">
+    <!-- Hero -->
+    <section class="tessera-hero">
+      <span class="eyebrow-badge"><i class="bi bi-shield-lock"></i> pure PHP 8.4+ · PSR 표준</span>
+      <h1>토큰 하나로,<br>신뢰할 수 있는 접근을.</h1>
+      <p class="tagline">"Your key to trusted access."</p>
+      <p>프레임워크 없는 순수 모던 PHP REST API. 검증된 PSR 표준 라이브러리를 조합해 JWT 발급·검증과 인가(스코프)를 처리합니다. 암호화·서명 같은 보안 핵심은 직접 구현하지 않고 신뢰받는 라이브러리에 위임합니다.</p>
+      <div class="req-block"><span class="c"># 액세스 토큰 발급</span>
+<span class="m">POST</span> /api/v1/token
+{
+  <span class="k">"grant_type"</span>: <span class="s">"client_credentials"</span>,
+  <span class="k">"client_id"</span>: <span class="s">"aicura_console"</span>,
+  <span class="k">"client_secret"</span>: <span class="s">"••••••••••••"</span>,
+  <span class="k">"scope"</span>: <span class="s">"reports:read hospitals:write"</span>
+}
+
+<span class="c"># 응답 (200 OK)</span>
+{
+  <span class="k">"access_token"</span>: <span class="s">"eyJhbGciOiJIUzI1NiIs..."</span>,
+  <span class="k">"token_type"</span>: <span class="s">"Bearer"</span>,
+  <span class="k">"expires_in"</span>: 900,
+  <span class="k">"refresh_token"</span>: <span class="s">"8f3a9c1e..."</span>
+}</div>
+    </section>
+
+    <!-- Endpoints -->
+    <section style="padding:56px 0 8px">
+      <div class="section-center">
+        <div class="section-eyebrow" style="color:var(--tessera-600)">Endpoints</div>
+        <h2 class="section-title" style="margin-bottom:0">핵심 엔드포인트 4종</h2>
+      </div>
+      <div class="endpoints">
+        <div class="card ep-card">
+          <span class="ep-method m-post">POST</span>
+          <div class="ep-path">/api/v1/token</div>
+          <div class="ep-desc">client_credentials·password 그랜트로 액세스·리프레시 토큰 발급.</div>
+        </div>
+        <div class="card ep-card">
+          <span class="ep-method m-post">POST</span>
+          <div class="ep-path">/api/v1/token/refresh</div>
+          <div class="ep-desc">리프레시 토큰 회전(rotation)과 함께 새 액세스 토큰 발급.</div>
+        </div>
+        <div class="card ep-card">
+          <span class="ep-method m-get">GET</span>
+          <div class="ep-path">/api/v1/token/introspect</div>
+          <div class="ep-desc">서명·만료·알고리즘(alg) 고정 검증 후 클레임·스코프 반환.</div>
+        </div>
+        <div class="card ep-card">
+          <span class="ep-method m-post">POST</span>
+          <div class="ep-path">/api/v1/token/revoke</div>
+          <div class="ep-desc">블랙리스트 등록으로 즉시 무효화(로그아웃 대응).</div>
+        </div>
+        <div class="card ep-card">
+          <span class="ep-method m-get">GET</span>
+          <div class="ep-path">/api/v1/jwks.json</div>
+          <div class="ep-desc">RS256 서비스 간 검증을 위한 공개키 세트(JWKS) 제공.</div>
+        </div>
+        <div class="card ep-card">
+          <span class="ep-method m-get">GET</span>
+          <div class="ep-path">/api/v1/health</div>
+          <div class="ep-desc">가동 상태·서명 키 로테이션 시각 확인용 헬스체크.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scopes -->
+    <section style="padding:48px 0">
+      <div class="row2" style="display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start">
+        <div class="card" style="padding:22px">
+          <div class="panel-title" style="font-weight:700;color:var(--text-strong);margin-bottom:12px">스코프(Scope) 예시</div>
+          <table class="scopes">
+            <thead><tr><th>스코프</th><th>설명</th></tr></thead>
+            <tbody>
+              <tr><td><span class="scope-code">reports:read</span></td><td>AI 일일 리포트 조회 권한</td></tr>
+              <tr><td><span class="scope-code">hospitals:write</span></td><td>병원(광고주) 정보 등록·수정 권한</td></tr>
+              <tr><td><span class="scope-code">licenses:issue</span></td><td>라이선스 발급·회수 권한(AILicet 연동)</td></tr>
+              <tr><td><span class="scope-code">admin</span></td><td>전체 스코프 — 운영자 전용</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card" style="padding:22px">
+          <div class="panel-title" style="font-weight:700;color:var(--text-strong);margin-bottom:14px">검증된 스택 위임</div>
+          <div class="stack-row">
+            <span class="stack-tag">lcobucci/jwt</span>
+            <span class="stack-tag">PSR-7</span>
+            <span class="stack-tag">PSR-15</span>
+            <span class="stack-tag">HS256 / RS256</span>
+            <span class="stack-tag">PHPStan lv.8</span>
+          </div>
+          <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin:14px 0 0">
+            서명·암호화 로직은 직접 구현하지 않고 신뢰받는 라이브러리에 위임하며, 알고리즘(alg)을 명시적으로 고정해 <code style="font-family:var(--font-mono);font-size:12px">alg:none</code> 우회를 차단합니다.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background:#fff;border-top:1px solid var(--border-subtle)">
+    <div class="container" style="padding:28px 24px;display:flex;justify-content:space-between;font-size:13px;color:var(--text-muted);flex-wrap:wrap;gap:12px">
+      <span><b style="font-family:var(--font-display);color:var(--text-strong)"><span style="color:var(--tessera)">AI</span>Tessera</b> · AIvance 제품군</span>
+      <span>© 2026 AIvance. pure PHP 8.4+ · PSR 표준</span>
+    </div>
+  </footer>
+
+</body>
+</html>

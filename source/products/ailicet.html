@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AILicet — 라이선스 발급·인증 콘솔 샘플 디자인</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/samples.css">
+  <style>
+    body { background: var(--surface-page); }
+    .app { display: flex; min-height: calc(100vh - 41px); }
+    /* Sidebar */
+    .sidebar { width: 230px; flex: none; background: var(--ink); color: #fff; display: flex; flex-direction: column; padding: 20px 14px; }
+    .sb-brand { display: flex; align-items: center; gap: 9px; font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -.02em; padding: 4px 10px 22px; }
+    .sb-brand .ai { color: var(--licet); }
+    .sb-nav { display: flex; flex-direction: column; gap: 2px; }
+    .sb-link { display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; color: var(--slate-400); cursor: pointer; }
+    .sb-link:hover { color: #fff; background: rgba(255,255,255,.06); }
+    .sb-link.active { background: var(--licet-600); color: #fff; font-weight: 600; }
+    .sb-scope { margin-top: auto; padding: 12px; border-radius: var(--radius-md); background: rgba(255,255,255,.06); font-size: 12px; color: var(--slate-400); }
+    .sb-scope b { color: #fff; display: block; margin-bottom: 2px; }
+    /* Main */
+    .main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+    .topbar { height: 60px; background: #fff; border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; padding: 0 26px; gap: 14px; }
+    .topbar .t-title { font-weight: 700; font-size: 16px; color: var(--text-strong); }
+    .topbar .t-sub { font-size: 12px; color: var(--text-subtle); }
+    .icon-btn { width: 36px; height: 36px; border-radius: var(--radius-sm); border: 1px solid var(--border-default); background: #fff; color: var(--text-body); cursor: pointer; }
+    .avatar { width: 34px; height: 34px; border-radius: 999px; background: var(--licet); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+    .content { padding: 26px; display: flex; flex-direction: column; gap: 18px; }
+    /* Stat cards */
+    .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .stat { background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 18px; box-shadow: var(--shadow-card); }
+    .stat-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .stat-ic { width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 17px; }
+    .ic-licet { background: var(--licet-50); color: var(--licet-600); }
+    .ic-danger { background: var(--danger-100); color: var(--danger-700); }
+    .stat-label { font-size: 13px; color: var(--text-muted); }
+    .stat-value { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--text-strong); }
+    /* panel + table */
+    .panel { background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md); box-shadow: var(--shadow-card); }
+    .panel-head { padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; }
+    .panel-title { font-weight: 700; color: var(--text-strong); }
+    table.lic { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    table.lic th { text-align: left; padding: 10px 20px; font-size: 12px; color: var(--text-subtle); font-weight: 600; border-bottom: 1px solid var(--border-subtle); }
+    table.lic td { padding: 12px 20px; border-bottom: 1px solid var(--border-subtle); color: var(--text-body); vertical-align: middle; }
+    table.lic tr:last-child td { border-bottom: none; }
+    .key-cell { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); }
+    .status { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: var(--radius-pill); }
+    .st-active { background: var(--success-100); color: var(--success-700); }
+    .st-warn { background: var(--warning-100); color: var(--warning-700); }
+    .st-revoked { background: var(--danger-100); color: var(--danger-700); }
+    .row-actions a { font-size: 12.5px; font-weight: 600; color: var(--danger-700); }
+    /* API panel */
+    .api-panel { background: var(--ink); color: #fff; border-radius: var(--radius-md); padding: 20px 22px; }
+    .api-panel .api-title { font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+    .api-panel .api-sub { font-size: 12.5px; color: var(--slate-400); margin-bottom: 14px; }
+    .code-block { font-family: var(--font-mono); font-size: 12.5px; line-height: 1.7; background: rgba(255,255,255,.06); border-radius: var(--radius-sm); padding: 14px 16px; overflow-x: auto; color: #E2E8F0; white-space: pre; }
+    .code-block .c-key { color: #FCD34D; }
+    .code-block .c-str { color: #86EFAC; }
+    @media (max-width: 720px) {
+      .sidebar { display: none; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      table.lic { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sample banner -->
+  <div class="sample-bar">
+    <a class="sb-back" href="../index.html"><i class="bi bi-arrow-left"></i> AIvance 홈</a>
+    <span class="sb-label"><span class="sb-tag" style="color:var(--licet)">AILicet</span> 라이선스 발급·인증 콘솔 샘플 디자인</span>
+    <a class="sb-home" href="https://licet.aivance.kr" target="_blank" rel="noopener">licet.aivance.kr <i class="bi bi-box-arrow-up-right"></i></a>
+  </div>
+
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sb-brand"><span class="ai">AI</span>Licet</div>
+      <nav class="sb-nav">
+        <a class="sb-link active"><i class="bi bi-speedometer2"></i> 대시보드</a>
+        <a class="sb-link"><i class="bi bi-key"></i> 라이선스 관리</a>
+        <a class="sb-link"><i class="bi bi-diagram-3"></i> 클라이언트 인증 API</a>
+        <a class="sb-link"><i class="bi bi-clock-history"></i> 발급 로그</a>
+        <a class="sb-link"><i class="bi bi-people"></i> 대행사·고객</a>
+        <a class="sb-link"><i class="bi bi-gear"></i> 설정</a>
+      </nav>
+      <div class="sb-scope"><b>운영자 스코프</b>AIvance 제품군 전체 라이선스</div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+      <div class="topbar">
+        <div>
+          <div class="t-title">라이선스 관리</div>
+          <div class="t-sub">2026년 7월 21일 · CodeIgniter 4 콘솔 + pure PHP 인증 API</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+          <button class="icon-btn" aria-label="알림"><i class="bi bi-bell"></i></button>
+          <button class="btn btn-sm" style="background:var(--licet);color:#fff;border-color:var(--licet)"><i class="bi bi-plus-lg"></i> 라이선스 발급</button>
+          <div class="avatar">운</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <!-- Stat cards -->
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-top"><span class="stat-label">활성 라이선스</span><span class="stat-ic ic-licet"><i class="bi bi-key"></i></span></div>
+            <div class="stat-value">1,284</div><span style="font-size:12px;color:var(--text-subtle)">전 제품군 합산</span>
+          </div>
+          <div class="stat">
+            <div class="stat-top"><span class="stat-label">이번달 신규 발급</span><span class="stat-ic ic-licet"><i class="bi bi-file-earmark-plus"></i></span></div>
+            <div class="stat-value">96</div><span class="delta up" style="color:var(--success-700);font-size:12px;font-weight:700"><i class="bi bi-arrow-up"></i> 14%</span>
+          </div>
+          <div class="stat">
+            <div class="stat-top"><span class="stat-label">만료 임박(7일)</span><span class="stat-ic ic-danger"><i class="bi bi-exclamation-triangle"></i></span></div>
+            <div class="stat-value">18</div><span style="font-size:12px;color:var(--text-subtle)">갱신 안내 발송됨</span>
+          </div>
+          <div class="stat">
+            <div class="stat-top"><span class="stat-label">오늘 인증 API 호출</span><span class="stat-ic ic-licet"><i class="bi bi-hdd-network"></i></span></div>
+            <div class="stat-value">42.1K</div><span style="font-size:12px;color:var(--text-subtle)">평균 응답 38ms</span>
+          </div>
+        </div>
+
+        <!-- License table -->
+        <div class="panel">
+          <div class="panel-head">
+            <div class="panel-title">최근 라이선스</div>
+            <a href="#" style="font-size:13px;color:var(--licet-600)">전체보기</a>
+          </div>
+          <table class="lic">
+            <thead>
+              <tr><th>제품</th><th>라이선스 키</th><th>발급 대상</th><th>만료일</th><th>상태</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b style="color:var(--text-strong)">AICura</b></td>
+                <td class="key-cell">LICT-CURA-8F2A-91BQ</td>
+                <td>서울라인 성형외과</td>
+                <td>2027-03-14</td>
+                <td><span class="status st-active">활성</span></td>
+                <td class="row-actions"><a href="#">회수</a></td>
+              </tr>
+              <tr>
+                <td><b style="color:var(--text-strong)">AICopia</b></td>
+                <td class="key-cell">LICT-COPI-3C7D-40ZT</td>
+                <td>(주)뷰티풀 스토어</td>
+                <td>2026-08-02</td>
+                <td><span class="status st-warn">만료 임박</span></td>
+                <td class="row-actions"><a href="#">회수</a></td>
+              </tr>
+              <tr>
+                <td><b style="color:var(--text-strong)">AICreo</b></td>
+                <td class="key-cell">LICT-CREO-A115-77KM</td>
+                <td>그레이스 피부과</td>
+                <td>2027-01-09</td>
+                <td><span class="status st-active">활성</span></td>
+                <td class="row-actions"><a href="#">회수</a></td>
+              </tr>
+              <tr>
+                <td><b style="color:var(--text-strong)">AICassa</b></td>
+                <td class="key-cell">LICT-CASS-D290-15VN</td>
+                <td>미소 상사</td>
+                <td>2026-05-30</td>
+                <td><span class="status st-revoked">회수됨</span></td>
+                <td class="row-actions" style="color:var(--text-subtle)">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- API panel -->
+        <div class="api-panel">
+          <div class="api-title"><i class="bi bi-hdd-network"></i> 클라이언트 인증 API</div>
+          <div class="api-sub">프레임워크 없는 pure PHP 엔드포인트 — 클라이언트 프로그램이 실행 시 라이선스를 검증합니다.</div>
+          <div class="code-block">POST <span class="c-str">/api/v1/license/verify</span>
+{
+  <span class="c-key">"license_key"</span>: <span class="c-str">"LICT-CURA-8F2A-91BQ"</span>,
+  <span class="c-key">"product"</span>: <span class="c-str">"aicura"</span>,
+  <span class="c-key">"fingerprint"</span>: <span class="c-str">"a3f9c1..."</span>
+}
+
+200 OK
+{ <span class="c-key">"status"</span>: <span class="c-str">"success"</span>, <span class="c-key">"data"</span>: { <span class="c-key">"valid"</span>: true, <span class="c-key">"expires_at"</span>: <span class="c-str">"2027-03-14"</span> } }</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

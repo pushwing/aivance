@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIPicto — 그림책 구독·열람 플랫폼 샘플 디자인</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/samples.css">
+  <style>
+    body { background: var(--surface-page); }
+    .picto-nav .brand .ai { color: var(--picto); }
+    .picto-hero {
+      background: linear-gradient(135deg, #7C2D12 0%, #C2410C 55%, #F97316 100%);
+      color: #fff; border-radius: var(--radius-xl); overflow: hidden;
+      padding: 52px 44px; margin: 26px 0; display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+    }
+    .picto-hero h1 { font-family: var(--font-display); font-size: clamp(26px,4vw,38px); font-weight: 700; letter-spacing: -.02em; margin: 12px 0 12px; line-height: 1.2; }
+    .picto-hero p { color: rgba(255,255,255,.85); font-size: 15px; margin: 0 0 20px; max-width: 400px; line-height: 1.65; }
+    .plans { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin: 26px 0 8px; }
+    .plan { background: #fff; border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 22px; box-shadow: var(--shadow-card); text-align: center; }
+    .plan.featured { border: 2px solid var(--picto); position: relative; }
+    .plan.featured::before { content: '인기'; position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--picto); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; }
+    .plan-name { font-weight: 700; color: var(--text-strong); font-size: 15px; margin-bottom: 6px; }
+    .plan-price { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--text-strong); margin-bottom: 4px; }
+    .plan-price span { font-size: 13px; font-weight: 500; color: var(--text-muted); }
+    .plan-desc { font-size: 12.5px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6; }
+    .book-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 16px; }
+    .book { cursor: pointer; }
+    .book-cover {
+      aspect-ratio: 3/4; border-radius: var(--radius-sm); overflow: hidden; position: relative;
+      box-shadow: var(--shadow-card); transition: box-shadow var(--dur-base), transform var(--dur-base);
+    }
+    .book:hover .book-cover { box-shadow: var(--shadow-lg); transform: var(--lift); }
+    .book-cover img { width: 100%; height: 100%; object-fit: cover; }
+    .book-badge { position: absolute; top: 8px; left: 8px; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 999px; background: var(--picto); color: #fff; }
+    .book-title { font-size: 13px; font-weight: 600; color: var(--text-strong); margin: 8px 0 2px; }
+    .book-author { font-size: 11.5px; color: var(--text-subtle); }
+    /* viewer mock */
+    .viewer-mock { background: var(--ink); border-radius: var(--radius-xl); padding: 40px 44px; display: flex; align-items: center; gap: 40px; color: #fff; flex-wrap: wrap; }
+    .viewer-pages { display: flex; gap: 6px; flex: 0 0 300px; }
+    .viewer-page { flex: 1; aspect-ratio: 3/4; border-radius: 6px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+    .viewer-page img { width: 100%; height: 100%; object-fit: cover; }
+    @media (max-width: 860px) {
+      .plans { grid-template-columns: 1fr; }
+      .book-grid { grid-template-columns: repeat(2,1fr); }
+      .viewer-mock { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sample banner -->
+  <div class="sample-bar">
+    <a class="sb-back" href="../index.html"><i class="bi bi-arrow-left"></i> AIvance 홈</a>
+    <span class="sb-label"><span class="sb-tag" style="color:var(--picto)">AIPicto</span> 그림책 구독·열람 플랫폼 샘플 디자인</span>
+    <a class="sb-home" href="https://picto.aivance.kr" target="_blank" rel="noopener">picto.aivance.kr <i class="bi bi-box-arrow-up-right"></i></a>
+  </div>
+
+  <!-- Product nav -->
+  <header class="site-header picto-nav">
+    <div class="container nav">
+      <span class="brand"><span class="ai">AI</span>Picto</span>
+      <nav class="nav-links"><a href="#">전체 그림책</a><a href="#">신간</a><a href="#">작가</a><a href="#">구독</a></nav>
+      <div class="nav-cta" style="display:flex;gap:16px;align-items:center;font-size:19px;color:var(--text-body)">
+        <a href="#" aria-label="검색"><i class="bi bi-search"></i></a>
+        <a href="#" class="btn btn-sm" style="background:var(--picto);color:#fff;border-color:var(--picto)">구독하기</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding:0 24px 64px">
+    <!-- Hero -->
+    <section class="picto-hero">
+      <div style="flex:1;min-width:260px">
+        <span class="badge-soft" style="background:rgba(255,255,255,.15);color:#fff"><i class="bi bi-book-half"></i> 회원 전용 그림책 구독</span>
+        <h1>펼쳐 읽는 그림책,<br>어디서나 우리 아이와 함께</h1>
+        <p>데스크탑은 펼침형 페이지 넘김 애니메이션, 모바일은 스와이프로 열람하는 그림책 구독 서비스입니다.</p>
+        <a href="#" class="btn btn-lg btn-light">무료로 둘러보기 <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div style="flex:0 0 240px;display:flex;flex-direction:column;gap:10px">
+        <div style="background:rgba(255,255,255,.14);border-radius:var(--radius-md);padding:16px"><div style="font-size:12px;color:rgba(255,255,255,.75)">보유 그림책</div><div style="font-family:var(--font-display);font-size:24px;font-weight:700">860+</div></div>
+        <div style="background:rgba(255,255,255,.14);border-radius:var(--radius-md);padding:16px"><div style="font-size:12px;color:rgba(255,255,255,.75)">참여 작가</div><div style="font-family:var(--font-display);font-size:24px;font-weight:700">132명</div></div>
+      </div>
+    </section>
+
+    <!-- Plans -->
+    <section style="padding:16px 0 48px">
+      <div class="section-center">
+        <div class="section-eyebrow" style="color:var(--picto-600)">Membership</div>
+        <h2 class="section-title" style="margin-bottom:0">우리 가족에게 맞는 구독 플랜</h2>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <div class="plan-name">건당 결제</div>
+          <div class="plan-price">2,900원<span> / 15일</span></div>
+          <div class="plan-desc">원하는 책만 골라서. 영구소장은 4,900원부터.</div>
+          <a href="#" class="btn btn-outline btn-sm" style="color:var(--picto-600);width:100%">책 둘러보기</a>
+        </div>
+        <div class="plan featured">
+          <div class="plan-name">월정액</div>
+          <div class="plan-price">12,900원<span> / 월</span></div>
+          <div class="plan-desc">전체 그림책 무제한 열람, 신간 즉시 이용.</div>
+          <a href="#" class="btn btn-sm" style="background:var(--picto);color:#fff;border-color:var(--picto);width:100%">월정액 시작하기</a>
+        </div>
+        <div class="plan">
+          <div class="plan-name">연정액</div>
+          <div class="plan-price">99,000원<span> / 년</span></div>
+          <div class="plan-desc">월정액 대비 36% 절약, 365일 전체 열람.</div>
+          <a href="#" class="btn btn-outline btn-sm" style="color:var(--picto-600);width:100%">연정액 시작하기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Book grid -->
+    <section style="padding-bottom:48px">
+      <div class="section-center">
+        <div class="section-eyebrow" style="color:var(--picto-600)">New arrivals</div>
+        <h2 class="section-title" style="margin-bottom:0">이번 주 신간 그림책</h2>
+      </div>
+      <div class="book-grid">
+        <div class="book">
+          <div class="book-cover"><span class="book-badge">NEW</span><img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=520&fit=crop" alt="숲속 작은 집"></div>
+          <div class="book-title">숲속 작은 집</div><div class="book-author">글·그림 이하늘</div>
+        </div>
+        <div class="book">
+          <div class="book-cover"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=520&fit=crop" alt="달빛 항해사"></div>
+          <div class="book-title">달빛 항해사</div><div class="book-author">글 박서연 · 그림 김도윤</div>
+        </div>
+        <div class="book">
+          <div class="book-cover"><span class="book-badge">NEW</span><img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=400&h=520&fit=crop" alt="구름을 타고"></div>
+          <div class="book-title">구름을 타고</div><div class="book-author">글·그림 정민아</div>
+        </div>
+        <div class="book">
+          <div class="book-cover"><img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=520&fit=crop" alt="바다의 노래"></div>
+          <div class="book-title">바다의 노래</div><div class="book-author">글 최유진 · 그림 한소미</div>
+        </div>
+        <div class="book">
+          <div class="book-cover"><img src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=400&h=520&fit=crop" alt="별이 된 강아지"></div>
+          <div class="book-title">별이 된 강아지</div><div class="book-author">글·그림 오지훈</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Viewer mock -->
+    <section style="padding-bottom:16px">
+      <div class="viewer-mock">
+        <div class="viewer-pages">
+          <div class="viewer-page"><img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=520&fit=crop" alt="펼침 왼쪽 페이지"></div>
+          <div class="viewer-page"><img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=400&h=520&fit=crop" alt="펼침 오른쪽 페이지"></div>
+        </div>
+        <div style="flex:1;min-width:260px">
+          <div class="badge-soft" style="background:rgba(255,255,255,.15);color:#fff;margin-bottom:14px"><i class="bi bi-shield-lock"></i> 이미지 보안</div>
+          <h2 style="font-family:var(--font-display);font-size:26px;font-weight:700;margin:0 0 12px;letter-spacing:-.02em">원본 유출 걱정 없는 뷰어</h2>
+          <p style="color:var(--slate-400);font-size:14.5px;margin:0;line-height:1.75">
+            책 이미지는 비공개 디렉토리에 저장되고, HMAC-SHA256으로 서명된 URL을 통해서만 접근합니다. 뷰어는 Canvas에 렌더링해 우클릭 저장·직접 다운로드를 막습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background:#fff;border-top:1px solid var(--border-subtle)">
+    <div class="container" style="padding:28px 24px;display:flex;justify-content:space-between;font-size:13px;color:var(--text-muted);flex-wrap:wrap;gap:12px">
+      <span><b style="font-family:var(--font-display);color:var(--text-strong)"><span style="color:var(--picto)">AI</span>Picto</b> · AIvance 제품군</span>
+      <span>© 2026 AIvance. CodeIgniter 4 · Bootstrap 5</span>
+    </div>
+  </footer>
+
+</body>
+</html>
