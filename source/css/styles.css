@@ -105,7 +105,7 @@
   .tags{display:flex;flex-wrap:wrap;gap:6px}
   .tag{font-size:12px;color:var(--text-body);background:var(--slate-100);padding:3px 9px;border-radius:999px}
 
-  .prod-links{margin-top:16px;padding-top:14px;border-top:1px solid var(--border-subtle);
+  .prod-links{margin-top:auto;padding-top:14px;border-top:1px solid var(--border-subtle);
               display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
   .prod-view{font-size:13px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
   .prod-home{font-size:13px;color:var(--text-muted);white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
